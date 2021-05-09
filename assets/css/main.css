@@ -1219,6 +1219,7 @@ pre code {
 @media screen and (max-width: 736px) {
 	table thead {
 		display: none;
+		font-size: 1.3vh;
 	}
 
 	table td {
