@@ -2066,6 +2066,7 @@ th, td {
 
 		.div_img_row {
 		  display: flex;
+			text-align: center;
 		  flex-wrap: wrap;
 		  padding: 0 4px;
 		}
@@ -2089,9 +2090,8 @@ th, td {
 	}
 
 	.hobbies {
-		margin: 0.5rem 0.5rem 0.5rem 0.5rem;
-		border-radius: 30px;
-		border: 0;
+		height: 35rem;
+		border-radius: 20px;
 	}
 
 		.image[data-position] img {
