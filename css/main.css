@@ -2466,7 +2466,8 @@ ul.icons li .icon:before {
 
 table {
   margin: 0 0 2.25em 0;
-  width: 100%;
+  width: 95%;
+	font-size: 1em
 }
 
 table tbody tr {
