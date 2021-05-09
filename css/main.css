@@ -232,7 +232,7 @@ pre code {
   color: #9ba4b4;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 800px) {
   table thead {
     display: none;
 		width:85%;
