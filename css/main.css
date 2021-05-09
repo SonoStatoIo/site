@@ -1219,7 +1219,6 @@ pre code {
 @media screen and (max-width: 736px) {
 	table thead {
 		display: none;
-		width:85%;
 	}
 
 	table td {
@@ -2465,18 +2464,18 @@ ul.icons li .icon:before {
 
 table {
   margin: 0 0 2.25em 0;
-  width: 95%;
-	font-size: 1em
+  width: 90%;
+	font-size: 1.3vh;
 }
 
 table tbody tr {
-  border: solid 2px #f4f4f4;
+  border: solid 0px #f4f4f2;
   border-left: 0;
   border-right: 0;
 }
 
 table tbody tr:nth-child(2n + 1) {
-  background-color: #fafafa;
+  background-color: #f4f4f2;
 }
 
 table td {
