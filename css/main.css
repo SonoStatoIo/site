@@ -232,23 +232,6 @@ pre code {
   color: #9ba4b4;
 }
 
-@media screen and (max-width: 480px) {
-  table thead {
-    display: none;
-		width:85%;
-  }
-
-  table td {
-    display: flex;
-  }
-
-  table td::before {
-    content: attr(label);
-    font-weight: bold;
-    width: 0.8vw;
-    min-width: 0.8vw;
-  }
-}
 
 .align-left {
   text-align: left;
@@ -1234,6 +1217,22 @@ pre code {
 }
 
 @media screen and (max-width: 736px) {
+	table thead {
+		display: none;
+		width:85%;
+	}
+
+	table td {
+		display: flex;
+	}
+
+	table td::before {
+		content: attr(label);
+		font-weight: bold;
+		width: 0.8vw;
+		min-width: 0.8vw;
+	}
+
   .row {
     display: flex;
     flex-wrap: wrap;
