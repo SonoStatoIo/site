@@ -4,6 +4,11 @@
 /* D. #7BAAE8 */
 /* E. #8CB2DE */
 /* F. #F9F7F7 */
+html {
+  width: auto;
+  height: auto;
+}
+
 body {
   font-family: 'Prompt', sans-serif;
   font-size: 1.5rem;
@@ -50,7 +55,7 @@ p {
   text-align: center;
 }
 
-#aphorism-sec{
+#aphorism-sec {
   background-color: #4071C7;
 }
 
@@ -71,16 +76,16 @@ p {
   font-size: 2.7rem;
 }
 
-.ico{
+.ico {
   margin-right: 1rem;
 }
 
-.icon-big{
+.icon-big {
   font-size: 3rem;
   margin-bottom: 1rem;
 }
 
-.mar-bottom{
+.mar-bottom {
   margin-bottom: 2rem;
 }
 
@@ -125,6 +130,11 @@ p {
   height: 0;
 }
 
+.nav-b-small {
+  visibility: hidden;
+  width: 0;
+}
+
 .navbar-brand {
   color: #FFF;
   font-size: 1.5rem;
@@ -157,14 +167,14 @@ p {
   height: 0;
 }
 
-.img-foto-big{
+.img-foto-big {
   width: 30rem;
   bottom: 0;
   padding-bottom: 0;
   margin-bottom: 0;
 }
 
-.img-foto-small{
+.img-foto-small {
   width: 10rem;
   border-radius: 100%;
 }
@@ -189,6 +199,10 @@ p {
   text-align: left;
 }
 
+.exp{
+  font-size: 1.1rem;
+}
+
 .c-al {
   text-align: center;
 }
@@ -207,12 +221,13 @@ p {
   border-radius: 15%;
 }
 
-.accordion-button{
+.accordion-button {
   border: 4px solid;
   border-color: #4071C7;
+  font-size: 1.8rem;
 }
 
-.aphorism{
+.aphorism {
   font-family: 'Caveat', cursive;
   font-size: 4rem;
   color: #FFF;
@@ -242,7 +257,7 @@ p {
     font-size: 2rem;
   }
 
-  .icon-big{
+  .icon-big {
     font-size: 2em;
     margin-bottom: 1rem;
   }
@@ -267,6 +282,13 @@ p {
 }
 
 @media only screen and (max-width: 700px) {
+  html, body {
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+    font-size: 1.1rem;
+  }
+
   section {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -274,6 +296,16 @@ p {
     padding-bottom: 3rem;
     border-bottom: 1px dotted;
     border-color: #A9B0CC;
+  }
+
+  .nav-b-small {
+    visibility: visible;
+    width: auto;
+  }
+
+  .nav-b-big {
+    visibility: hidden;
+    width: 0;
   }
 
   .navbar-lg {
@@ -286,7 +318,11 @@ p {
     height: auto;
   }
 
-  .aphorism{
+  .accordion-button {
+    font-size: 1.2rem;
+  }
+
+  .aphorism {
     font-size: 3rem;
   }
 }
