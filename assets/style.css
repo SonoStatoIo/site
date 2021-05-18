@@ -185,7 +185,7 @@ p {
 }
 
 .short-desc {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   margin: 1rem auto;
   text-align: left;
 }
@@ -199,7 +199,7 @@ p {
   text-align: left;
 }
 
-.exp{
+.exp {
   font-size: 1.1rem;
 }
 
@@ -298,6 +298,22 @@ p {
     border-color: #A9B0CC;
   }
 
+  .hi {
+    font-size: 2.4rem
+  }
+
+  .title-big {
+    font-size: 1.7rem;
+  }
+
+  .short-desc {
+    font-size: 1.1rem
+  }
+
+  .title-fluid {
+    font-size: 1.6rem;
+  }
+
   .nav-b-small {
     visibility: visible;
     width: auto;
@@ -318,11 +334,19 @@ p {
     height: auto;
   }
 
+  .skill-name {
+    padding: 0;
+  }
+
+  .exp {
+    padding: 0;
+  }
+
   .accordion-button {
     font-size: 1.2rem;
   }
 
   .aphorism {
-    font-size: 3rem;
+    font-size: 2.3rem;
   }
 }
