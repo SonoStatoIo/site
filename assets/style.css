@@ -65,6 +65,7 @@ p {
   padding-bottom: 1%;
   text-align: center;
   color: #A9B0CC;
+  font-size: 0.8rem;
 }
 
 /* TITLES */
@@ -132,6 +133,7 @@ p {
 
 .nav-b-small {
   visibility: hidden;
+  font-size: 0;
   width: 0;
 }
 
@@ -233,120 +235,139 @@ p {
   color: #FFF;
 }
 
-@media only screen and (max-width: 1450px) {
-  body {
-    font-size: 1.3rem;
-  }
-}
-
-@media only screen and (max-width: 1200px) {
-  body {
-    font-size: 1.3rem;
-  }
-
-  section {
-    padding-left: 5rem;
-    padding-right: 5rem;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    border-bottom: 1px dotted;
-    border-color: #A9B0CC;
-  }
-
-  .title-big {
-    font-size: 2rem;
-  }
-
-  .icon-big {
-    font-size: 2em;
-    margin-bottom: 1rem;
-  }
-
-  .title-fluid {
-    font-size: 1.9rem;
-    text-align: center;
-  }
-
-  .foto-profilo-big {
-    visibility: hidden;
-    height: 0;
-  }
-
-  .foto-profilo-small {
-    visibility: visible;
-    position: relative;
-    text-align: center;
-    height: auto;
-    padding-bottom: 1rem;
-  }
-}
-
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 1439px) {
   html, body {
     width: 100%;
     height: auto;
     overflow-x: hidden;
-    font-size: 1.1rem;
-  }
-
-  section {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    border-bottom: 1px dotted;
-    border-color: #A9B0CC;
+    font-size: 1.3rem;
   }
 
   .hi {
     font-size: 2.4rem
   }
 
-  .title-big {
-    font-size: 1.7rem;
-  }
-
   .short-desc {
-    font-size: 1.1rem
+    font-size: 1.3rem
   }
 
-  .title-fluid {
-    font-size: 1.6rem;
+  .hob-img {
+    width: 12rem;
   }
 
-  .nav-b-small {
-    visibility: visible;
-    width: auto;
+  @media only screen and (max-width: 1200px) {
+    html, body {
+      width: 100%;
+      height: auto;
+      overflow-x: hidden;
+      font-size: 1.3rem;
+    }
+
+    section {
+      padding-left: 5rem;
+      padding-right: 5rem;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px dotted;
+      border-color: #A9B0CC;
+    }
+
+    .title-big {
+      font-size: 2rem;
+    }
+
+    .icon-big {
+      font-size: 2em;
+      margin-bottom: 1rem;
+    }
+
+    .title-fluid {
+      font-size: 1.9rem;
+      text-align: center;
+    }
+
+    .foto-profilo-big {
+      visibility: hidden;
+      height: 0;
+    }
+
+    .foto-profilo-small {
+      visibility: visible;
+      position: relative;
+      text-align: center;
+      height: auto;
+      padding-bottom: 1rem;
+    }
   }
 
-  .nav-b-big {
-    visibility: hidden;
-    width: 0;
-  }
+  @media only screen and (max-width: 700px) {
+    html, body {
+      width: 100%;
+      height: auto;
+      overflow-x: hidden;
+      font-size: 1.1rem;
+    }
 
-  .navbar-lg {
-    visibility: hidden;
-    height: 0;
-  }
+    section {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px dotted;
+      border-color: #A9B0CC;
+    }
 
-  .navbar-sm {
-    visibility: visible;
-    height: auto;
-  }
+    .hi {
+      font-size: 2.4rem
+    }
 
-  .skill-name {
-    padding: 0;
-  }
+    .title-big {
+      font-size: 1.7rem;
+    }
 
-  .exp {
-    padding: 0;
-  }
+    .short-desc {
+      font-size: 1.1rem
+    }
 
-  .accordion-button {
-    font-size: 1.2rem;
-  }
+    .title-fluid {
+      font-size: 1.6rem;
+    }
 
-  .aphorism {
-    font-size: 2.3rem;
+    .nav-b-small {
+      visibility: visible;
+      font-size: 1.4rem;
+      width: auto;
+    }
+
+    .nav-b-big {
+      visibility: hidden;
+      font-size: 0;
+      width: 0;
+    }
+
+    .navbar-lg {
+      visibility: hidden;
+      height: 0;
+    }
+
+    .navbar-sm {
+      visibility: visible;
+      height: auto;
+    }
+
+    .skill-name {
+
+    }
+
+    .exp {
+      font-size: 0.9rem;
+    }
+
+    .accordion-button {
+      font-size: 1.2rem;
+    }
+
+    .aphorism {
+      font-size: 2.3rem;
+    }
   }
-}
