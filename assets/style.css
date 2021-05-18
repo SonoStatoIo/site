@@ -356,11 +356,11 @@ p {
     }
 
     .skill-name {
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
 
     .exp {
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
 
     .accordion-button {
@@ -372,6 +372,6 @@ p {
     }
 
     .aphorism {
-      font-size: 1.8rem;
+      font-size: 1.7rem;
     }
   }
