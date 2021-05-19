@@ -20,9 +20,10 @@
 
 <body>
   <a name="top"></a>
-  <!-- NAVBAR -->
+
+  <!-- NAVBAR MAIN-->
   <div class="container-fluid bg-dblue no-margin">
-    <nav class="navbar">
+    <nav class="navbar sticky-top">
       <div class="container-fluid">
         <a class="navbar-brand nav-b-big" href="#profile-sec">Daniele Petricone | Data Analyst & Digital Expert</a>
         <a class="navbar-brand nav-b-small" href="#profile-sec">Daniele Petricone</a>
@@ -30,68 +31,44 @@
     </nav>
   </div>
 
-  <div class="container-fluid bg-lblue navbar-lg sticky-top no-margin">
-    <nav class="navbar navbar-expand">
-      <div class="container-fluid">
-        <ul class="navbar-nav">
-          <li><a class="nav-link" href="#skills-sec">SKILLS</a></li>
-          <li><a class="nav-link" href="#myexperience-sec">EXPERIENCE</a></li>
-          <li><a class="nav-link" href="#hobbies-sec">HOBBIES</a></li>
-        </ul>
+  <!-- NAVBAR SECONDARY BIG-->
+  <nav class="navbar navbar-expand navbar-dark bg-lblue navbar-lg no-margin sticky-top">
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link active" href="#skills-sec">SKILLS</a></li>
+      <li class="nav-item"><a class="nav-link active" href="#myexperience-sec">EXPERIENCE</a></li>
+      <li class="nav-item"><a class="nav-link active" href="#hobbies-sec">HOBBIES</a></li>
+    </ul>
 
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-          <li><a href="https://twitter.com/Sono_Stato_Io"><i class="fab fa-twitter nav-icon"></i></a></li>
-          <li><a href="https://www.instagram.com/o0_daniele_0o/"><i class="fab fa-instagram nav-icon"></i></a></li>
-          <li><a href="https://www.facebook.com/daniele.petricone/"><i class="fab fa-facebook nav-icon"></i></a></li>
-          <li><a href="https://www.linkedin.com/in/dpetricone/"><i class="fab fa-linkedin nav-icon"></i></a></li>
-        </ul>
-      </div>
-    </nav>
-  </div>
-
-  <!-- NAVBAR-SMALL-SCREEN -->
-  <div class="container-fluid bg-lblue navbar-sm sticky-top  no-margin">
-    <nav class="navbar navbar-expand">
-      <div class="container-fluid">
-        <ul class="navbar-nav">
-          <li><a href="https://twitter.com/Sono_Stato_Io"><i class="fab fa-twitter nav-icon"></i></a></li>
-          <li><a href="https://www.instagram.com/o0_daniele_0o/"><i class="fab fa-instagram nav-icon"></i></a></li>
-          <li><a href="https://www.facebook.com/daniele.petricone/"><i class="fab fa-facebook nav-icon"></i></a></li>
-          <li><a href="https://www.linkedin.com/in/dpetricone/"><i class="fab fa-linkedin nav-icon"></i></a></li>
-        </ul>
-
-        <div>
-
-          <!-- SIDE MENU -->
-          <div class="btn-group dropstart">
-          <button class="button navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#little_nav" aria-controls="little_nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="little_nav">
-
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown little-nav-ico">
-                <a class="nav-link dropdown-toggle" href="#" id="little_nav_menu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="fas fa-bars"></i> NAVI
-                </a>
-
-                <ul class="dropdown-menu dropdown-menu-start" aria-labelledby="little_nav_menu">
-                  <li><a class="dropdown-item nav-link-blue" href="#skills-sec">SKILLS</a></li>
-                  <li><a class="dropdown-item nav-link-blue" href="#myexperience-sec">EXPERIENCE</a></li>
-                  <li><a class="dropdown-item nav-link-blue" href="#hobbies-sec">HOBBIES</a></li>
-                </ul>
-
-              </li>
-            </ul>
-          </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </div>
+    <ul class="navbar-nav ml-auto">
+      <li><a href="https://twitter.com/Sono_Stato_Io"><i class="fab fa-twitter nav-icon"></i></a></li>
+      <li><a href="https://www.instagram.com/o0_daniele_0o/"><i class="fab fa-instagram nav-icon"></i></a></li>
+      <li><a href="https://www.facebook.com/daniele.petricone/"><i class="fab fa-facebook nav-icon"></i></a></li>
+      <li><a href="https://www.linkedin.com/in/dpetricone/"><i class="fab fa-linkedin nav-icon"></i></a></li>
+    </ul>
+  </nav>
 
 
+  <!-- NAVBAR SECONDARY SMALL-->
+  <nav class="navbar navbar-expand-md navbar-dark bg-lblue navbar-sm no-margin">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler" aria-controls="navbar-toggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse no-margin" id="navbar-toggler">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link active" href="#skills-sec">SKILLS</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#myexperience-sec">EXPERIENCE</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#hobbies-sec">HOBBIES</a></li>
+      </ul>
+    </div>
+
+    <ul class="nav ml-auto ">
+      <li><a href="https://twitter.com/Sono_Stato_Io"><i class="fab fa-twitter nav-icon"></i></a></li>
+      <li><a href="https://www.instagram.com/o0_daniele_0o/"><i class="fab fa-instagram nav-icon"></i></a></li>
+      <li><a href="https://www.facebook.com/daniele.petricone/"><i class="fab fa-facebook nav-icon"></i></a></li>
+      <li><a href="https://www.linkedin.com/in/dpetricone/"><i class="fab fa-linkedin nav-icon"></i></a></li>
+    </ul>
+  </nav>
 
   <!-- MAIN -->
   <section id="profile-sec">
@@ -268,7 +245,7 @@
     <div class="container text-center">
       <h1 class="title-big"><i class="fas fa-user-tie ico"></i><strong>MY WORK EXPERIENCE...</strong></h1>
     </div>
-
+    
     <hr class="tilte-sep">
 
     <div class="container">
@@ -325,7 +302,7 @@
 
       <div class="accordion-item">
         <h2 class="accordion-header" id="Hobby_PC">
-          <button class="shadow p-3 mb-5 bg-body rounded accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#PC" aria-expanded="true" aria-controls="collapseOne">
+          <button class="btn btn-lg btn-primary accordion-button bg-lblue" type="button" data-bs-toggle="collapse" data-bs-target="#PC" aria-expanded="true" aria-controls="collapseOne">
             PC / GAMING
           </button>
         </h2>
@@ -360,7 +337,7 @@
 
       <div class="accordion-item">
         <h2 class="accordion-header" id="Hobby_Networks">
-          <button class="shadow p-3 mb-5 bg-body rounded accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#net" aria-expanded="false" aria-controls="collapseTwo">
+          <button class="btn btn-lg btn-primary accordion-button bg-lblue" type="button" data-bs-toggle="collapse" data-bs-target="#net" aria-expanded="false" aria-controls="collapseTwo">
             NETWORKS
           </button>
         </h2>
@@ -394,7 +371,7 @@
 
       <div class="accordion-item ">
         <h2 class="accordion-header" id="Hobby_Raspberry">
-          <button class="shadow p-3 mb-5 bg-body rounded accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#raspberry" aria-expanded="false" aria-controls="collapseThree">
+          <button class="btn btn-lg btn-primary accordion-button bg-lblue" type="button" data-bs-toggle="collapse" data-bs-target="#raspberry" aria-expanded="false" aria-controls="collapseThree">
             RASPBERRY PI
           </button>
         </h2>
@@ -427,7 +404,7 @@
 
       <div class="accordion-item">
         <h2 class="accordion-header" id="Hobby_DIY">
-          <button class="shadow p-3 mb-5 bg-body rounded accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#diy" aria-expanded="false" aria-controls="collapseThree">
+          <button class="btn btn-lg btn-primary accordion-button bg-lblue" type="button" data-bs-toggle="collapse" data-bs-target="#diy" aria-expanded="false" aria-controls="collapseThree">
             DIY
           </button>
         </h2>

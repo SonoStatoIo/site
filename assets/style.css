@@ -160,18 +160,13 @@ p {
   color: #FFF;
 }
 
-.nav-link-blue {
-  font-size: 1.1rem;
-  color: #4071C7;
-}
-
 .nav-icon {
   color: #FFF;
-  margin: 0.7rem;
+  margin: 1rem;
 }
 
 .little-nav-ico {
-  right: 1rem;
+  right: 0.7rem;
 }
 
 /* FOTO E PROFILO */
@@ -357,7 +352,6 @@ p {
       font-size: 1.6rem;
     }
 
-
     .nav-b-small {
       visibility: visible;
       font-size: 1.4rem;
@@ -389,7 +383,7 @@ p {
     }
 
     .accordion-button {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
 
     .hob-img {
