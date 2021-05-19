@@ -240,7 +240,7 @@ p {
 
 /* HOBBIES */
 .hob-img {
-  width: 20rem;
+  width: 80%;
   height: auto;
   padding: 1rem 0;
   border-radius: 15%;
@@ -253,8 +253,7 @@ p {
 }
 
 .accordion-item {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  width: 80%;
 }
 
 .aphorism {
@@ -288,7 +287,16 @@ p {
   }
 
   .hob-img {
-    width: 12rem;
+    width: 10rem;
+  }
+
+  .accordion-item {
+    width: auto;
+  }
+
+  .accordion-item {
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 
   @media only screen and (max-width: 1200px) {
