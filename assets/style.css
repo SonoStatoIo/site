@@ -72,12 +72,12 @@ p {
   position: fixed;
   bottom: 2rem;
   right: 0.5rem;
-  z-index: -1;
+  z-index: -2;
 }
 
 .go_up-ico {
   color: #0F2D69;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 
 /* TITLES */
@@ -168,6 +168,10 @@ p {
 .nav-icon {
   color: #FFF;
   margin: 0.7rem;
+}
+
+.little-nav-ico {
+  right: 1rem;
 }
 
 /* FOTO E PROFILO */
@@ -333,6 +337,10 @@ p {
       border-color: #A9B0CC;
     }
 
+    .go_up-ico {
+      font-size: 2rem;
+    }
+
     .hi {
       font-size: 2.4rem
     }
@@ -348,6 +356,7 @@ p {
     .title-fluid {
       font-size: 1.6rem;
     }
+
 
     .nav-b-small {
       visibility: visible;
