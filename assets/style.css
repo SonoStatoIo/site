@@ -158,6 +158,8 @@ p {
 
 .nav-link {
   color: #FFF;
+  text-align: left;
+  margin-left: 1.5rem;
 }
 
 .nav-icon {
@@ -313,6 +315,10 @@ p {
       height: auto;
       padding-bottom: 1rem;
     }
+
+    .aphorism {
+      font-size: 1.7rem;
+    }
   }
 
   @media only screen and (max-width: 700px) {
@@ -391,6 +397,6 @@ p {
     }
 
     .aphorism {
-      font-size: 1.7rem;
+      font-size: 1.5rem;
     }
   }
