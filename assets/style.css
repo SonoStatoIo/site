@@ -33,6 +33,22 @@ p {
   text-align: center;
 }
 
+h1 {
+  font-size: 2.7rem;
+}
+
+h2 {
+  font-size: 2.3rem;
+  text-align: center;
+}
+
+hr {
+  border-top: 0.1rem dashed;
+  width: 35rem;
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+}
+
 #profile-sec {
   background-color: #DBE2EF;
   padding-top: 0;
@@ -85,10 +101,6 @@ p {
   padding-bottom: 1%;
 }
 
-.title-big {
-  font-size: 2.7rem;
-}
-
 .ico {
   margin-right: 1rem;
 }
@@ -100,18 +112,6 @@ p {
 
 .mar-bottom {
   margin-bottom: 2rem;
-}
-
-.title-fluid {
-  font-size: 2.3rem;
-  text-align: center;
-}
-
-.title-sep {
-  border-top: 0.1rem dashed;
-  width: 35rem;
-  margin-top: 1rem;
-  margin-bottom: 4rem;
 }
 
 .text-center {
@@ -296,7 +296,6 @@ p {
     padding-right: 1rem;
   }
 
-
   @media only screen and (max-width: 1200px) {
     html, body {
       width: 100%;
@@ -314,22 +313,22 @@ p {
       border-color: #A9B0CC;
     }
 
-    .go_up {
-      z-index: 1;
+    h1 {
+      font-size: 2rem;
     }
 
-    .title-big {
-      font-size: 2rem;
+    h2 {
+      font-size: 1.9rem;
+      text-align: center;
+    }
+
+    .go_up {
+      z-index: 1;
     }
 
     .icon-big {
       font-size: 2em;
       margin-bottom: 1rem;
-    }
-
-    .title-fluid {
-      font-size: 1.9rem;
-      text-align: center;
     }
 
     .foto-profilo-big {
@@ -367,6 +366,14 @@ p {
       border-color: #A9B0CC;
     }
 
+    h1 {
+      font-size: 1.7rem;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+    }
+
     .go_up-ico {
       font-size: 2rem;
     }
@@ -375,16 +382,8 @@ p {
       font-size: 2.4rem
     }
 
-    .title-big {
-      font-size: 1.7rem;
-    }
-
     .short-desc {
       font-size: 1.1rem
-    }
-
-    .title-fluid {
-      font-size: 1.6rem;
     }
 
     .nav-b-small {
