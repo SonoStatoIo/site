@@ -28,6 +28,19 @@ body {
   min-height: 100vh;
 }
 
+body::-webkit-scrollbar{
+  width: 0.5rem;
+}
+
+body::-webkit-scrollbar-track{
+  background-color: hsl(0, 0%, 80%);
+}
+
+body::-webkit-scrollbar-thumb{
+  background-color: var(--primary-color-1);
+  border-radius: 7%;
+}
+
 section {
   width: 90vw;
   margin: 4rem 0;
