@@ -285,11 +285,20 @@ h4>i {
 
 .container.left {
   transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  /* IE 9 */
+  -webkit-transform: rotate(2deg);
+  /* Safari */
+
   margin-right: 2rem;
 }
 
 .container.right {
   transform: rotate(-2deg);
+  -ms-transform: rotate(-2deg);
+  /* IE 9 */
+  -webkit-transform: rotate(-2deg);
+  /* Safari */
   margin-left: 2rem;
 }
 
@@ -449,11 +458,6 @@ footer>.socials>ul>li>a>i {
     flex-direction: column;
   }
 
-  .container.left,
-  .container.right {
-    transform: rotate(1);
-  }
-
   .date.left,
   .date.right {
     border: none;
@@ -506,6 +510,10 @@ footer>.socials>ul>li>a>i {
   .container.right {
     margin: 0;
     transform: rotate(0);
+    -ms-transform: rotate(0);
+    /* IE 9 */
+    -webkit-transform: rotate(0);
+    /* Safari */
   }
 
   .date.left,
@@ -604,6 +612,10 @@ footer>.socials>ul>li>a>i {
   .container.right {
     margin: 0;
     transform: rotate(0);
+    -ms-transform: rotate(0);
+    /* IE 9 */
+    -webkit-transform: rotate(0);
+    /* Safari */
   }
 
   .date.left,

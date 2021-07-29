@@ -199,7 +199,7 @@ hr {
     border-radius: 10px;
     width: 70%;
 
-    background-color: hsla(228, 20%, 70%, 0.4);
+    background-color: hsla(228, 20%, 70%, .7);
 }
 
 .container>.row>.sub-row.text>p {
@@ -244,6 +244,11 @@ img {
     margin-left: -30vw;
 
     transform: rotate(15deg);
+
+    -ms-transform: rotate(15deg);
+    /* IE 9 */
+    -webkit-transform: rotate(15deg);
+    /* Safari */
 }
 
 .second {
@@ -251,6 +256,11 @@ img {
     position: absolute;
 
     transform: rotate(-10deg)
+
+    -ms-transform: rotate(-10deg);
+    /* IE 9 */
+    -webkit-transform: rotate(-10deg);
+    /* Safari */
 }
 
 .third {
@@ -258,7 +268,13 @@ img {
     position: absolute;
 
     margin-left: 30vw;
+    
     transform: rotate(15deg);
+
+    -ms-transform: rotate(15deg);
+    /* IE 9 */
+    -webkit-transform: rotate(15deg);
+    /* Safari */
 }
 
 footer {
