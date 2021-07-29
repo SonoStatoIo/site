@@ -242,13 +242,16 @@ hr {
 }
 
 .polaroid:hover {
+    z-index: 3;
     box-shadow: 5px 5px 24px 10px rgba(0, 0, 0, 0.4);
+    transform: rotate(0);
 }
 
 img {
-    width: 300px;
+    width: 100%;
     height: auto;
 }
+
 
 .first {
     z-index: 1;
