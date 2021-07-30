@@ -210,18 +210,15 @@ section {
   text-align: justify;
 }
 
-footer > .aphorism {
+footer>.aphorism {
   font-family: var(--font-cursive);
   font-size: 1.4rem;
   padding-right: 2rem;
   text-align: right;
 }
 
-footer > .socials {
+footer>.socials {
   display: none;
-  grid-template-rows: 1fr;
-  justify-content: flex-end;
-  align-items: center;
 }
 
 @media screen and (max-width: 1220px) {
@@ -285,11 +282,11 @@ footer > .socials {
     border-radius: 100%;
   }
 
-  footer > .aphorism {
+  footer>.aphorism {
     display: none;
   }
 
-  footer > .socials {
+  footer>.socials {
     display: grid;
   }
 }
@@ -446,4 +443,5 @@ footer > .socials {
     font-size: 0.9rem;
     padding: 0.1rem;
   }
+
 }

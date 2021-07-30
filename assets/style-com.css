@@ -180,8 +180,7 @@ footer>.copyright {
 }
 
 footer>.socials {
-    display: grid;
-    grid-template-rows: 1fr;
+    display: flex;
     justify-content: flex-end;
     align-items: center;
 
@@ -199,11 +198,10 @@ footer>.socials>ul {
     grid-template-columns: repeat(4, 1fr);
     justify-content: center;
     text-align: center;
+    gap: .9rem;
 }
 
 footer>.socials>ul>li {
-    display: flex;
-    justify-content: center;
     padding: 0;
     margin: 0 2rem;
 }
@@ -213,7 +211,6 @@ footer>.socials>ul>li>a {
 }
 
 footer>.socials>ul>li>a>i {
-    display: grid;
     color: var(--primary-color-1);
     font-size: 1.6rem;
 }
@@ -407,6 +404,10 @@ footer>.socials>ul>li>a>i {
 
     .toggle-button {
         right: 1.5rem;
+    }
+
+    footer>.socials, footer>.socials>ul{
+        width: 100%;
     }
 
     footer>.copyright {
