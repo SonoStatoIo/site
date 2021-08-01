@@ -238,20 +238,21 @@ footer>.socials {
     display: flex;
     vertical-align: middle;
     background-color: transparent;
-    margin: 20vh auto auto 25vw;
+
+    margin: 10vh auto auto 20vw;
 
     height: 70vh;
     width: 50vw;
 
     border: none;
-    border-radius: 5px;
-
-    -ms-transform: rotate(4deg);
+     
     /* IE 9 */
-    -webkit-transform: rotate(4deg);
+    -ms-transform: rotate(4deg);
+
     /* Safari */
+    -webkit-transform: rotate(4deg);
+  
     transform: rotate(4deg);
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 
   .main-card {
@@ -429,9 +430,15 @@ footer>.socials {
 
 @media screen and (max-width: 550px) {
   .main-container {
+    position: relative;
     width: 95vw;
-    margin: 15vh auto auto 3vw;
-    max-height: 560px;
+
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+    margin-left: auto;
+    margin-right: auto;
+    
+    max-height: calc(90% - 5rem - 3rem);
   }
 
   .main-txt {
@@ -443,12 +450,16 @@ footer>.socials {
     padding: 0;
   }
 
+  .hello>img {
+    width: 60%;
+  }
+
   .bottom-div {
     top: 0;
   }
 
   .buttons {
-    padding-bottom: 0.5rem;
+    padding: 0.5rem 2rem;
   }
 
   .intro {

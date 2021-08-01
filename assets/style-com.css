@@ -25,17 +25,17 @@
 
 html {
     min-width: 100%;
-    min-height: 100vh;
+    min-height: 100%;
 }
 
 body {
-    min-height: 100vh;
-    padding-top: 8rem;
+    min-height: calc(100vh - var(--navbar-h));
+    margin-top: var(--navbar-h);
 }
 
 body>#bg{
     z-index: -1;
-    height: calc(100% - var(--navbar-h));
+    height: 100%;
     width: 100%;
     clip-path: var(--clip-base);
     background-color: var(--primary-color-1);
@@ -275,7 +275,6 @@ footer>.socials>ul>li>a>i {
         float: left;
         height: 1.2rem;
         width: 1.2rem;
-        background-color: var(--primary-color-1);
         margin-right: 0.5rem;
     }
 
@@ -321,9 +320,8 @@ footer>.socials>ul>li>a>i {
 
     .logo>.logo-img {
         float: left;
-        height: 1.2rem;
-        width: 1.2rem;
-        background-color: var(--primary-color-1);
+        height: 1.4rem;
+        width: 1.4rem;
         margin-right: 0.5rem;
     }
 
@@ -354,10 +352,14 @@ footer>.socials>ul>li>a>i {
 }
 
 @media screen and (max-width: 850px) {
+    body {
+        min-height: calc(100vh - var(--navbar-h-m));
+        margin-top: var(--navbar-h-m);
+    }
+
     body>#bg{
         height: calc(100% - var(--navbar-h-m));
         clip-path: polygon(0 0, 38% 0, 80% 100%, 0% 100%);
-        margin-top: -5rem;
     }
 
     .nav-des {
@@ -366,11 +368,6 @@ footer>.socials>ul>li>a>i {
 
     .logo {
         padding: 1rem 0.5rem;
-    }
-
-    .logo>.logo-img {
-        height: 1.1rem;
-        width: 1.1rem;
     }
 
     .logo>.name-def>.name {
@@ -391,11 +388,6 @@ footer>.socials>ul>li>a>i {
 
     .logo {
         padding: 1rem 0.5rem;
-    }
-
-    .logo>.logo-img {
-        height: 1.1rem;
-        width: 1.1rem;
     }
 
     .logo>.name-def>.name {
@@ -443,11 +435,6 @@ footer>.socials>ul>li>a>i {
     .logo {
         padding-left: 0.3rem;
         width: 100%;
-    }
-
-    .logo>.logo-img {
-        height: 0.8rem;
-        width: 0.8rem;
     }
 
     .logo>.name-def>.name {
