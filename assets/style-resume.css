@@ -1,20 +1,16 @@
-:root {
-  font-size: 16px;
-  box-sizing: border-box;
-  font-family: var(--font-general);
+@keyframes bg-clip {
+  0% {
+    clip-path: var(--clip-base);
+  }
+    
+  50%{
+    clip-path: polygon(35% 0, 65% 0, 65% 100%, 35% 100%);
+  }
+  
 
-  --primary-color-1: rgba(46, 59, 122, 1);
-  --primary-color-2: rgba(80, 90, 133, 1);
-  --primary-color-3: rgba(113, 127, 190, 0.8);
-  --primary-color-4: hsla(228, 20%, 70%, 0.8);
-
-  --secondary-color-1: rgba(46, 59, 122, 0.4);
-  --secondary-color-2: rgba(46, 59, 122, 0.8);
-
-  --font-general: "Lato", sans-serif;
-  --font-strong: "Lexend", sans-serif;
-  --font-cursive: "Caveat", cursive;
-  --font-alternative: "Cairo", sans-serif;
+  100% {
+    clip-path: polygon(0 0, 34% 0, 34% 100%, 0% 100%);
+  }
 }
 
 section {
@@ -193,8 +189,6 @@ h4>i {
 
 
 @media screen and (max-width: 1300px) {
-
-
   .skill-container {
     padding: 0.5rem 0;
   }
