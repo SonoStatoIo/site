@@ -353,12 +353,12 @@ footer>.socials>ul>li>a>i {
 
 @media screen and (max-width: 850px) {
     body {
-        min-height: calc(100vh - var(--navbar-h-m));
         margin-top: var(--navbar-h-m);
     }
 
     body>#bg{
-        height: calc(100% - var(--navbar-h-m));
+        /* height: calc(100% - var(--navbar-h-m)); */
+        height: 100%;
         clip-path: polygon(0 0, 38% 0, 80% 100%, 0% 100%);
     }
 
