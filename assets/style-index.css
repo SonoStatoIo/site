@@ -461,9 +461,16 @@ footer>.socials {
     padding: 0.1rem;
   }
 
-  @media screen and (max-width: 350px) {
+  @media screen and (max-width: 360px) {
     .main-container {
-      transform: scale(0.78);
+      transform: scale(0.8);
+      
+    }
+  }
+
+  @media screen and (max-width: 320px) {
+    .main-container {
+      transform: scale(0.75);
       
     }
   }
