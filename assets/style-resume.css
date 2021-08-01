@@ -13,6 +13,21 @@
   }
 }
 
+@-webkit-keyframes bg-clip {
+  0% {
+    clip-path: var(--clip-base);
+  }
+    
+  50%{
+    clip-path: polygon(35% 0, 65% 0, 65% 100%, 35% 100%);
+  }
+  
+
+  100% {
+    clip-path: polygon(0 0, 34% 0, 34% 100%, 0% 100%);
+  }
+}
+
 section {
   width: 90vw;
   margin: 4rem 0;
