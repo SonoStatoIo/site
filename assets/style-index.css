@@ -8,6 +8,10 @@
 body {
   display: flex;
   flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
   height: 100%;
   width: 100%;
 }
@@ -50,7 +54,6 @@ section {
 
 .main-container {
   z-index: 0;
-  position: fixed;
 
   display: grid;
   grid-template-columns: 50% 50%;
@@ -58,8 +61,6 @@ section {
 
   align-items: center;
   justify-content: center;
-  
-  margin: 22vh auto auto 33vw;
 
   width: 55rem;
   height: 40rem;
@@ -239,8 +240,6 @@ footer>.socials {
     vertical-align: middle;
     background-color: transparent;
 
-    margin: 10vh auto auto 20vw;
-
     height: 70vh;
     width: 50vw;
 
@@ -308,6 +307,7 @@ footer>.socials {
   .main-container {
     height: 70vh;
     width: 70vw;
+
     max-height: 800px;
     max-width: 600px;
 
@@ -343,7 +343,6 @@ footer>.socials {
 
   .main-container {
     display: flex;
-    margin: 17vh auto auto 15vw;
 
     height: 75vh;
     width: 70vw;
@@ -351,10 +350,12 @@ footer>.socials {
     max-height: 700px;
     max-width: 500;
 
-    -ms-transform: rotate(0deg);
     /* IE 9 */
-    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    
     /* Safari */
+    -webkit-transform: rotate(0deg);
+    
     transform: rotate(0deg);
   }
 
@@ -387,7 +388,6 @@ footer>.socials {
 
     height: 75vh;
     width: 70vw;
-    margin: 15vh auto auto 10vw;
   }
 
   .hello>img {
@@ -430,15 +430,9 @@ footer>.socials {
 
 @media screen and (max-width: 550px) {
   .main-container {
-    position: relative;
     width: 95vw;
-
-    margin-top: 1rem;
-    margin-bottom: 0rem;
-    margin-left: auto;
-    margin-right: auto;
-    
-    max-height: calc(90% - 5rem - 3rem);
+    margin-top: -3rem;
+    max-height: calc(100% - 5rem - 3rem);
   }
 
   .main-txt {
@@ -467,4 +461,10 @@ footer>.socials {
     padding: 0.1rem;
   }
 
+  @media screen and (max-width: 400px) {
+    .main-container {
+      transform: scale(0.75);
+      
+    }
+  }
 }

@@ -349,4 +349,13 @@ h4>i {
   .date.right {
     margin-bottom: 1rem;
   }
+
+  @media screen and (max-width: 400px) {
+    .container.left, .container.right{
+      transform: scale(0.9);
+      width: 95%;
+      padding: .7rem;
+      margin: 0;
+    }
+  }
 }

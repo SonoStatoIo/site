@@ -470,4 +470,11 @@ footer>.socials>ul>li>a>i {
     footer>.socials>ul>li>a>i {
         font-size: 1.2rem;
     }
+
+    @media screen and (max-width: 400px) {
+        .logo{
+            transform: scale(0.8);
+            margin-left: -2rem;
+        }
+    }
 }
