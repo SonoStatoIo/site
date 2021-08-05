@@ -2,11 +2,11 @@
   0% {
     clip-path: var(--clip-base);
   }
-    
-  50%{
+
+  50% {
     clip-path: polygon(35% 0, 65% 0, 65% 100%, 35% 100%);
   }
-  
+
 
   100% {
     clip-path: polygon(0 0, 40% 0, 40% 100%, 0% 100%);
@@ -17,11 +17,11 @@
   0% {
     clip-path: var(--clip-base);
   }
-    
-  50%{
+
+  50% {
     clip-path: polygon(35% 0, 65% 0, 65% 100%, 35% 100%);
   }
-  
+
 
   100% {
     clip-path: polygon(0 0, 34% 0, 34% 100%, 0% 100%);
@@ -56,47 +56,51 @@ h4>i {
 
 .skill-container {
   z-index: 1;
-  box-sizing: content-box;
-  box-shadow: 5px 5px 16px 5px rgba(0, 0, 0, 0.2);
   display: grid;
+  row-gap: .5rem;
+  padding: 1rem .5rem;
+
+  width: 65%;
+
+  border-radius: 5px;
   background-color: var(--primary-color-2);
   border: 5px solid white;
   color: white;
-
-  border-radius: 5px;
-  padding: 2rem;
-  width: 70%;
+  box-shadow: 5px 5px 16px 5px rgba(0, 0, 0, 0.2);
 }
 
-.skill-row {
+.skill-container .skill-row {
+  display: grid;
+  justify-items: center;
+
+  grid-template-columns: 1fr 1fr;
+  column-gap: 0rem;
+}
+
+.skill-container .skill-column {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 0 8rem;
+  width: 80%;
 }
 
-.skill-column {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.skill {
+.skill-container .skill-column .skill {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   text-transform: capitalize;
   font-family: var(--font-strong);
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
-.level {
+.skill-container .skill-column .level {
   display: flex;
   justify-content: center;
   margin: 1rem;
 }
 
-.level>i {
+.skill-container .skill-column .level>i {
   color: white;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 #experience {
@@ -329,15 +333,20 @@ h4>i {
     width: 95%;
   }
 
-  .skill-row {
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr;
-  }
-
+  
   .skill-container {
-    box-sizing: content-box;
     padding: 2rem;
     width: 70%;
+  }
+
+  .skill-container .skill-row {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .skill-container .skill-column {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
   }
 
   .container.left>ul,
@@ -351,7 +360,9 @@ h4>i {
   }
 
   @media screen and (max-width: 400px) {
-    .container.left, .container.right{
+
+    .container.left,
+    .container.right {
       transform: scale(0.9);
       width: 95%;
       padding: .7rem;

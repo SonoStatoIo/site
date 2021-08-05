@@ -225,10 +225,13 @@ section {
 }
 
 footer>.aphorism {
+  display: flex;
+  justify-content: flex-end;
+
   font-family: var(--font-cursive);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+
   padding-right: 2rem;
-  text-align: right;
 }
 
 footer>.socials {
@@ -296,12 +299,7 @@ footer>.socials {
   }
 
   footer>.socials{
-    width: 100%;
-    display: grid;
-  }
-
-  footer>.socials>ul>li{
-    margin: 0 1rem;
+    display: flex;
   }
 
   footer>.aphorism {

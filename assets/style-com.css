@@ -1,5 +1,5 @@
 :root {
-    font-size: 16px;
+    font-size: 13px;
     box-sizing: border-box;
     font-family: var(--font-general);
 
@@ -30,7 +30,7 @@ html {
 
 body {
     min-height: calc(100vh - var(--navbar-h));
-    margin:0;
+    margin: 0;
     margin-top: var(--navbar-h);
 }
 
@@ -161,6 +161,7 @@ header {
     text-decoration: none;
     color: black;
     transition: 0.4s ease;
+    font-size: 1.2rem;
 }
 
 .link>ul>li:first-child>a {
@@ -194,54 +195,54 @@ header {
 
 footer {
     z-index: 2;
-    background-color: white;
-    position: fixed;
+    width: 100%;
+    height: 4rem;
 
+    position: fixed;
     bottom: 0;
 
-    width: 100%;
-    height: 3rem;
     display: grid;
     grid-template-columns: 50% 50%;
     align-items: center;
+    
+    background-color: white;
+}
+
+footer * {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    align-items: stretch;
+    margin: auto 0;
 }
 
 footer>.copyright {
     padding-left: 2rem;
+    font-size: 1.1rem;
 }
 
-footer>.socials {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-
-    width: 80%;
+footer>.socials{
+    justify-self: flex-end;
+    width: 35vw;
+    max-width: 400px;
 }
 
-footer>.socials>ul {
-    font-size: 1.2rem;
-
-    margin: auto;
-    padding: 0.5rem 2rem;
+footer>.socials ul {
+    flex-direction: row;
     list-style: none;
-
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-content: center;
-    text-align: center;
-    gap: .9rem;
 }
 
-footer>.socials>ul>li {
+footer>.socials li{
     padding: 0;
-    margin: 0 2rem;
 }
 
-footer>.socials>ul>li>a {
+footer>.socials a{
     text-decoration: none;
 }
 
-footer>.socials>ul>li>a>i {
+footer>.socials i {
+    text-align: center;
+    padding: .5rem .5rem;
     color: var(--primary-color-1);
     font-size: 1.6rem;
 }
@@ -401,10 +402,6 @@ footer>.socials>ul>li>a>i {
         display: flex;
     }
 
-    footer>.socials>ul>li {
-        margin: 0 1.2rem;
-    }
-
     footer>.socials>ul>li>a>i {
         font-size: 1.4rem;
     }
@@ -435,12 +432,12 @@ footer>.socials>ul>li>a>i {
 
     footer>.socials,
     footer>.socials>ul {
-        width: 100%;
+        width: 90%;
     }
 
     footer>.copyright {
-        padding-left: 0.3rem;
-        font-size: 0.8rem;
+        padding-left: .5rem;
+        font-size: 1rem;
     }
 
     footer>.socials>ul>li {
@@ -453,8 +450,18 @@ footer>.socials>ul>li>a>i {
 
     @media screen and (max-width: 400px) {
         .logo {
+            width: fit-content;
+            align-self: left;
+            
             transform: scale(0.8);
-            margin-left: -2rem;
+            /* IE 9 */
+            -ms-transform: scale(0.8);
+            /* Safari */
+            -webkit-transform: scale(0.8);
+        }
+
+        .logo .logo-img{
+            margin-right: 1rem;
         }
     }
 }
