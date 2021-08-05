@@ -245,14 +245,11 @@ footer>.socials {
     width: 50vw;
 
     border: none;
-     
+    transform: rotate(4deg);
     /* IE 9 */
     -ms-transform: rotate(4deg);
-
     /* Safari */
     -webkit-transform: rotate(4deg);
-  
-    transform: rotate(4deg);
   }
 
   .main-card {
@@ -276,7 +273,6 @@ footer>.socials {
   }
 
   .buttons {
-    display: grid;
     grid-template-columns: auto;
     gap: 0.5rem;
     grid-template-rows: 50% 50%;
@@ -299,12 +295,17 @@ footer>.socials {
     border-radius: 100%;
   }
 
-  footer>.aphorism {
-    display: none;
+  footer>.socials{
+    width: 100%;
+    display: grid;
   }
 
-  footer>.socials {
-    display: grid;
+  footer>.socials>ul>li{
+    margin: 0 1rem;
+  }
+
+  footer>.aphorism {
+    display: none;
   }
 }
 
@@ -316,11 +317,11 @@ footer>.socials {
     max-height: 800px;
     max-width: 600px;
 
-    -ms-transform: rotate(6deg);
-    /* IE 9 */
-    -webkit-transform: rotate(6deg);
-    /* Safari */
     transform: rotate(6deg);
+    /* IE 9 */
+    -ms-transform: rotate(6deg);
+    /* Safari */
+    -webkit-transform: rotate(6deg);
   }
 
   .hello {
@@ -331,13 +332,6 @@ footer>.socials {
     display: flex;
     flex-direction: column;
     margin-top: 1vh;
-  }
-
-  .bottom-div {
-    top: auto;
-    bottom: auto;
-    right: auto;
-    left: auto;
   }
 }
 
@@ -355,13 +349,11 @@ footer>.socials {
     max-height: 700px;
     max-width: 500;
 
+    transform: rotate(0deg);
     /* IE 9 */
     -ms-transform: rotate(0deg);
-    
     /* Safari */
     -webkit-transform: rotate(0deg);
-    
-    transform: rotate(0deg);
   }
 
   .hello>img {
@@ -377,13 +369,6 @@ footer>.socials {
     padding: 0.8rem;
     padding-right: 1rem;
   }
-
-  .bottom-div {
-    top: auto;
-    bottom: auto;
-    right: auto;
-    left: auto;
-  }
 }
 
 @media screen and (max-width: 720px) {
@@ -397,13 +382,6 @@ footer>.socials {
 
   .hello>img {
     width: 70%;
-  }
-
-  .bottom-div {
-    top: auto;
-    bottom: auto;
-    right: auto;
-    left: auto;
   }
 
   .main-txt {
@@ -468,15 +446,21 @@ footer>.socials {
 
   @media screen and (max-width: 360px) {
     .main-container {
-      transform: scale(0.8);
-      
+    transform: scale(0.8);
+     /* IE 9 */
+    -ms-transform: scale(0.8);
+    /* Safari */
+    -webkit-transform: scale(0.8);  
     }
   }
 
   @media screen and (max-width: 320px) {
     .main-container {
       transform: scale(0.75);
-      
+      /* IE 9 */
+      -ms-transform: scale(0.75);
+      /* Safari */
+      -webkit-transform: scale(0.75);
     }
   }
 }
