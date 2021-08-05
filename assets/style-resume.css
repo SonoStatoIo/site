@@ -58,9 +58,9 @@ h4>i {
   z-index: 1;
   display: grid;
   row-gap: .5rem;
-  padding: 1rem .5rem;
+  padding: 1rem 0;
 
-  width: 65%;
+  width: 50%;
 
   border-radius: 5px;
   background-color: var(--primary-color-2);
@@ -74,13 +74,13 @@ h4>i {
   justify-items: center;
 
   grid-template-columns: 1fr 1fr;
-  column-gap: 0rem;
+  column-gap: 2rem;
+  padding: 0 4vw;
 }
 
 .skill-container .skill-column {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: 80%;
 }
 
 .skill-container .skill-column .skill {
@@ -101,6 +101,7 @@ h4>i {
 .skill-container .skill-column .level>i {
   color: white;
   font-size: 1rem;
+  margin: 0 .2rem;
 }
 
 #experience {
@@ -295,6 +296,7 @@ h4>i {
 
   .skill-column {
     margin: 0 0.5rem;
+    padding: 0;
   }
 
   .skill-row {
@@ -339,10 +341,8 @@ h4>i {
   .title>hr {
     width: 95%;
   }
-
   
   .skill-container {
-    padding: 2rem;
     width: 70%;
   }
 
@@ -367,7 +367,6 @@ h4>i {
   }
 
   @media screen and (max-width: 400px) {
-
     .container.left,
     .container.right {
       transform: scale(0.9);
