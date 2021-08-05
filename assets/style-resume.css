@@ -121,10 +121,9 @@ h4>i {
 }
 
 .container {
-  box-sizing: content-box;
   text-align: justify;
 
-  padding: 1rem;
+  padding: 1.7rem;
   margin: 1.5rem;
 
   background-color: var(--primary-color-2);
@@ -135,12 +134,20 @@ h4>i {
   color: white;
 }
 
-.container>h4 {
+.container h4 {
   font-family: var(--font-strong);
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
 
-.container>hr {
+.container h5 {
+  font-size: 1.2rem;
+}
+
+.container li {
+  font-size: 1.1rem;
+}
+
+.container hr {
   border: none;
   overflow: visible;
 
