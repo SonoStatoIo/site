@@ -169,12 +169,12 @@ section {
 
 .buttons {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-
-  padding: 1.5rem 0.5rem;
-  padding-right: 5rem;
-
+  align-items: center;
+  justify-items: center;
   text-align: center;
+
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1.2rem 0.5rem;
 }
 
 .buttons>a {
@@ -182,6 +182,7 @@ section {
   align-items: center;
   justify-content: center;
 
+  width: 85%;;
   border-radius: 25px;
   margin: 0 0.5rem;
   height: 1.8rem;
@@ -283,6 +284,12 @@ footer>.socials {
     padding: 1rem 5rem;
   }
 
+  .buttons a {
+    width: 60%;
+    height: 100%;
+    font-size: 1.2rem;
+  }
+
   .hello {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -342,7 +349,7 @@ footer>.socials {
     display: flex;
 
     height: 75vh;
-    width: 70vw;
+    width: 60vw;
 
     max-height: 700px;
     max-width: 500;
@@ -367,6 +374,7 @@ footer>.socials {
     padding: 0.8rem;
     padding-right: 1rem;
   }
+ 
 }
 
 @media screen and (max-width: 720px) {
@@ -393,12 +401,13 @@ footer>.socials {
   }
 
   .hello-2 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-bottom: 0.1rem;
   }
 
   .intro {
-    font-size: 1rem;
+    font-size: 1.2rem;
+    padding: .8rem;
   }
 
   .buttons {
@@ -437,28 +446,13 @@ footer>.socials {
     padding: 0.5rem 2rem;
   }
 
-  .intro {
-    font-size: 0.9rem;
-    padding: 0.1rem;
-  }
-
-  @media screen and (max-width: 360px) {
-    .main-container {
-    transform: scale(0.8);
-     /* IE 9 */
-    -ms-transform: scale(0.8);
-    /* Safari */
-    -webkit-transform: scale(0.8);  
-    }
-  }
-
   @media screen and (max-width: 320px) {
     .main-container {
-      transform: scale(0.75);
+      transform: scale(.9);
       /* IE 9 */
-      -ms-transform: scale(0.75);
+      -ms-transform: scale(.9);
       /* Safari */
-      -webkit-transform: scale(0.75);
+      -webkit-transform: scale(.9);
     }
   }
 }
