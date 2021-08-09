@@ -293,8 +293,6 @@ footer>.socials i {
 @media screen and (max-width: 1300px) {
     .logo>.logo-img {
         float: left;
-        height: 1.2rem;
-        width: 1.2rem;
         margin-right: 0.5rem;
     }
 
@@ -328,51 +326,12 @@ footer>.socials i {
     }
 }
 
-@media screen and (max-width: 1090px) {
-    body>#bg {
-        clip-path: polygon(0 0, 38% 0, 80% 100%, 0% 100%);
-    }
-
-    .logo>.logo-img {
-        float: left;
-        height: 1.4rem;
-        width: 1.4rem;
-        margin-right: 0.5rem;
-    }
-
-    .logo>.name-def {
-        float: right;
-    }
-
-    .logo>.name-def>br {
-        display: none;
-    }
-
-    .logo>.name-def>.name {
-        font-family: var(--font-strong);
-        font-size: 2rem;
-    }
-
-    .logo>.name-def>br {
-        display: block;
-    }
-
-    .logo>.name-def>.def {
-        padding-left: 0.2rem;
-    }
-
-    .link {
-        font-size: 0.9rem;
-    }
-}
-
 @media screen and (max-width: 850px) {
     body {
         margin-top: var(--navbar-h-m);
     }
 
     body>#bg {
-        /* height: calc(100% - var(--navbar-h-m)); */
         height: 100%;
         clip-path: polygon(0 0, 38% 0, 80% 100%, 0% 100%);
     }
@@ -383,7 +342,7 @@ footer>.socials i {
 
     .logo {
         padding: 1rem 2rem;
-        width: 65%;
+        width: 40%;
     }
 
     .logo>.name-def>.name {
@@ -396,6 +355,10 @@ footer>.socials i {
 }
 
 @media screen and (max-width: 740px) {
+    .logo {
+        width: 100%;
+    }
+
     .nav-des {
         display: flex;
         flex-direction: column;
