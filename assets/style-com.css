@@ -290,8 +290,7 @@ footer>.socials i {
     font-size: 1.6rem;
 }
 
-@media screen and (min-width: 1919px) {  
-
+@media screen and (min-width: 1950px) {  
     section {
         zoom: 1.3; 
      }
