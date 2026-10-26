@@ -5,7 +5,7 @@ name: Update energy data
 # so the site can read it without browser restrictions (CORS) or rate limits.
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "7,37 * * * *"
   workflow_dispatch:
 
 permissions:
