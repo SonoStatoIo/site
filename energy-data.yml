@@ -1,0 +1,67 @@
+name: Update energy data
+
+# Every 30 minutes, downloads today's Italian power generation by source
+# from Energy-Charts (Fraunhofer ISE, CC BY 4.0) and saves it to data/energy.json,
+# so the site can read it without browser restrictions (CORS) or rate limits.
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: energy-data
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download Italian generation data
+        run: |
+          mkdir -p data
+          python3 - <<'PY'
+          import json, time, urllib.request
+          url = "https://api.energy-charts.info/public_power?country=it"
+          req = urllib.request.Request(url, headers={"User-Agent": "sonostatoio-site/1.0 (+https://sonostatoio.github.io/site/)"})
+          for attempt in range(3):
+              try:
+                  with urllib.request.urlopen(req, timeout=60) as r:
+                      d = json.load(r)
+                  break
+              except Exception as e:
+                  print("attempt", attempt + 1, "failed:", e)
+                  time.sleep(40)
+          else:
+              raise SystemExit("Energy-Charts not reachable, keeping previous data")
+          out = {
+              "source": "Energy-Charts.info (Fraunhofer ISE) - CC BY 4.0",
+              "fetched_at": int(time.time()),
+              "unix_seconds": d.get("unix_seconds", []),
+              "production_types": [
+                  {"name": p["name"], "data": [None if v is None else round(v, 1) for v in p.get("data", [])]}
+                  for p in d.get("production_types", [])
+              ],
+          }
+          if not out["unix_seconds"] or not out["production_types"]:
+              raise SystemExit("Empty response, keeping previous data")
+          with open("data/energy.json", "w") as f:
+              json.dump(out, f, separators=(",", ":"))
+          print("saved", len(out["unix_seconds"]), "timestamps,", len(out["production_types"]), "series")
+          PY
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/energy.json
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Update energy data [skip ci]"
+            git push
+          fi
