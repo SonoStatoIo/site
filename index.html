@@ -290,12 +290,12 @@ textarea{width:100%;min-height:150px;resize:vertical;font-size:.86rem}
 .dash .d-price{grid-row:span 2}
 @media (max-width:980px){.dash{grid-template-columns:1fr}.dash .d-price{grid-row:auto}}
 .pc-wrap{position:relative;height:300px}
-#pricechart{width:100%;height:100%;display:block;cursor:crosshair}
+#genchart{width:100%;height:100%;display:block;cursor:crosshair}
 .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
 @media (max-width:560px){.kpis{grid-template-columns:repeat(2,1fr)}}
 .kpi{border:1px solid var(--line2);border-radius:10px;padding:10px 12px;background:rgba(0,0,0,.2)}
 .kpi small{display:block;font-family:var(--mono);font-size:.68rem;color:var(--muted);text-transform:uppercase}
-.kpi b{font-family:var(--mono);font-size:1.15rem}
+.kpi b{font-family:var(--mono);font-size:1.05rem}
 .mixw{display:flex;gap:16px;align-items:center}
 @media (max-width:560px){.mixw{flex-direction:column}}
 #donut{width:170px;height:170px;flex:none}
@@ -641,18 +641,19 @@ footer b{color:var(--green);font-weight:400}
   <div class="sec-head reveal">
     <div class="sec-num">05 <span>// tail -f energy.log</span></div>
     <h2><span data-l="it">Energy desk <span class="hl">live</span></span><span data-l="en">Live <span class="hl">energy desk</span></span></h2>
-    <p class="sec-sub"><span data-l="it">Il mercato elettrico in tempo reale, da dove è iniziato il mio percorso: prezzi day-ahead, mix di produzione italiano e meteo di Roma.</span><span data-l="en">The power market in real time, where my journey began: day-ahead prices, the Italian generation mix and Rome's weather.</span></p>
+    <p class="sec-sub"><span data-l="it">Il sistema elettrico italiano in tempo reale, da dove è iniziato il mio percorso: produzione per fonte, quota di rinnovabili e meteo di Roma.</span><span data-l="en">The Italian power system in real time, where my journey began: generation by source, renewable share and Rome's weather.</span></p>
   </div>
   <div class="dash">
     <div class="term d-price reveal">
-      <div class="term-h"><i></i><i></i><i></i><em><span data-l="it">prezzo day-ahead · zona Nord · oggi</span><span data-l="en">day-ahead price · North zone · today</span></em><span class="rt" id="pupd"></span></div>
+      <div class="term-h"><i></i><i></i><i></i><em><span data-l="it">produzione elettrica · Italia · oggi</span><span data-l="en">power generation · Italy · today</span></em><span class="rt" id="pupd"></span></div>
       <div class="term-b">
-        <div class="pc-wrap"><canvas id="pricechart"></canvas><div class="dempty" id="pempty" hidden><span data-l="it">Dati non disponibili al momento</span><span data-l="en">Data not available right now</span></div></div>
+        <div class="pc-wrap"><canvas id="genchart"></canvas><div class="dempty" id="pempty" hidden><span data-l="it">Dati non disponibili al momento</span><span data-l="en">Data not available right now</span></div></div>
+        <div class="legend" id="glegend"></div>
         <div class="kpis">
-          <div class="kpi"><small><span data-l="it">ora</span><span data-l="en">now</span></small><b id="pnow">—</b></div>
-          <div class="kpi"><small>min</small><b id="pmin">—</b></div>
-          <div class="kpi"><small>max</small><b id="pmax">—</b></div>
-          <div class="kpi"><small><span data-l="it">media</span><span data-l="en">average</span></small><b id="pavg">—</b></div>
+          <div class="kpi"><small><span data-l="it">rinnovabili ora</span><span data-l="en">renewables now</span></small><b id="pnow">—</b></div>
+          <div class="kpi"><small><span data-l="it">produzione ora</span><span data-l="en">generation now</span></small><b id="pmin">—</b></div>
+          <div class="kpi"><small><span data-l="it">picco solare</span><span data-l="en">solar peak</span></small><b id="pmax">—</b></div>
+          <div class="kpi"><small><span data-l="it">rinnovabili media oggi</span><span data-l="en">renewables avg today</span></small><b id="pavg">—</b></div>
         </div>
       </div>
     </div>
@@ -976,94 +977,93 @@ footer b{color:var(--green);font-weight:400}
 
   /* ---------- live data ---------- */
   var LIVE={wind:{it:'ROMA · VENTO',en:'ROME · WIND',v:null},sun:{it:'ROMA · IRRAGGIAMENTO',en:'ROME · IRRADIANCE',v:null},
-    price:{it:'DAY-AHEAD IT-NORD',en:'DAY-AHEAD IT-NORTH',v:null},ren:{it:'RINNOVABILI IN RETE · IT',en:'RENEWABLE SHARE · IT',v:null},solar:{it:'FOTOVOLTAICO · IT',en:'SOLAR OUTPUT · IT',v:null}};
-  var DATA={price:undefined,mix:undefined,meteo:undefined};DP.data=DATA;DP.live=LIVE;
+    ren:{it:'RINNOVABILI IN RETE · IT',en:'RENEWABLE SHARE · IT',v:null},solar:{it:'FOTOVOLTAICO · IT',en:'SOLAR OUTPUT · IT',v:null},
+    load:{it:'PRODUZIONE · IT',en:'GENERATION · IT',v:null}};
+  var DATA={gen:undefined,meteo:undefined};DP.data=DATA;DP.live=LIVE;
   function liveTok(k,cls,ico){return'<span class="'+cls+' lt" data-lt="'+k+'" style="display:none">'+ico+' <span data-lk="'+k+'"></span> <b class="lv" data-lv="'+k+'"></b></span>';}
-  var tk=[liveTok('ren','g','⚡'),'<span>G1 X120.4 Y45.1 E0.42</span>',liveTok('wind','g','≋'),'<span class="c">SELECT * FROM portfolio</span>',liveTok('price','c','€'),'<span class="a">M104 S215 ; hotend</span>',liveTok('sun','a','☀'),'<span class="c">copilot.agent.run()</span>',liveTok('solar','g','▦'),'<span>flow.trigger(onEmail)</span>','<span class="a">layer 128/248</span>','<span class="c">import pandas as pd</span>','<span class="a">G28 ; home</span>'].join('');
+  var tk=[liveTok('ren','g','⚡'),'<span>G1 X120.4 Y45.1 E0.42</span>',liveTok('wind','g','≋'),'<span class="c">SELECT * FROM portfolio</span>',liveTok('load','c','∑'),'<span class="a">M104 S215 ; hotend</span>',liveTok('sun','a','☀'),'<span class="c">copilot.agent.run()</span>',liveTok('solar','g','▦'),'<span>flow.trigger(onEmail)</span>','<span class="a">layer 128/248</span>','<span class="c">import pandas as pd</span>','<span class="a">G28 ; home</span>'].join('');
   $('ticker').innerHTML=tk+tk+tk+tk;
   function paintLive(){document.querySelectorAll('[data-lk]').forEach(function(e){e.textContent=LIVE[e.getAttribute('data-lk')][lang];});
     Object.keys(LIVE).forEach(function(k){var v=LIVE[k].v;document.querySelectorAll('[data-lt="'+k+'"]').forEach(function(e){e.style.display=v==null?'none':'';});
       document.querySelectorAll('[data-lv="'+k+'"]').forEach(function(e){e.textContent=v==null?'':v;});});}
   function getJSON(url){var c=('AbortController' in window)?new AbortController():null;var t=setTimeout(function(){if(c)c.abort();},12000);
-    return fetch(url,c?{signal:c.signal}:{}).then(function(r){clearTimeout(t);if(!r.ok)throw new Error('HTTP '+r.status);return r.json();});}
-  function lastIdx(ts,arr){var now=Date.now()/1000,b=-1;for(var i=0;i<ts.length;i++){if(ts[i]>now)break;if(arr[i]!=null)b=i;}return b;}
+    return fetch(url,c?{signal:c.signal,cache:'no-store'}:{cache:'no-store'}).then(function(r){clearTimeout(t);if(!r.ok)throw new Error('HTTP '+r.status);return r.json();});}
   function hhmm(sec){var d=new Date(sec*1000);return('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);}
 
+  /* weather — Open-Meteo */
   function loadMeteo(){return getJSON('https://api.open-meteo.com/v1/forecast?latitude=41.89&longitude=12.49&current=temperature_2m,wind_speed_10m,shortwave_radiation&wind_speed_unit=ms&timezone=Europe%2FRome')
-    .then(function(j){var c=j.current||{};DATA.meteo=c;renderMeteo();}).catch(function(){DATA.meteo=null;renderMeteo();});}
+    .then(function(j){DATA.meteo=j.current||null;renderMeteo();}).catch(function(){DATA.meteo=null;renderMeteo();});}
   function renderMeteo(){var c=DATA.meteo;if(c===undefined)return;
     if(!c){LIVE.wind.v=LIVE.sun.v=null;$('wt').textContent=$('ww').textContent=$('wi').textContent='n/d';$('tagtemp').textContent='';paintLive();return;}
     LIVE.wind.v=c.wind_speed_10m!=null?fmtN(c.wind_speed_10m,1)+' m/s':null;LIVE.sun.v=c.shortwave_radiation!=null?fmtN(c.shortwave_radiation)+' W/m²':null;
     $('wt').textContent=c.temperature_2m!=null?fmtN(c.temperature_2m,1)+'°C':'n/d';$('ww').textContent=LIVE.wind.v||'n/d';$('wi').textContent=LIVE.sun.v||'n/d';
     $('tagtemp').textContent=c.temperature_2m!=null?' · '+fmtN(c.temperature_2m)+'°C':'';paintLive();}
 
-  var ZONES=['IT-North','IT-NORD','IT-Nord','IT_North'];
-  function loadPrice(z){z=z||0;if(z>=ZONES.length){DATA.price=null;renderPrice();return Promise.resolve();}
-    return getJSON('https://api.energy-charts.info/price?bzn='+encodeURIComponent(ZONES[z])).then(function(j){
-      var ts=j.unix_seconds||[],pr=j.price||[];if(!ts.length||!pr.some(function(v){return v!=null;}))throw 0;DATA.price={ts:ts,p:pr};renderPrice();})
-      .catch(function(){return loadPrice(z+1);});}
-
+  /* Italian generation — Energy-Charts (CC BY 4.0). A GitHub Action caches it in the repo (CORS-friendly); direct API is the last fallback. */
+  var ESRC=['https://raw.githubusercontent.com/SonoStatoIo/site/main/data/energy.json','data/energy.json','https://api.energy-charts.info/public_power?country=it'];
   var MIXG=[{k:'solar',re:/solar/i,c:'#ffb238',it:'Solare',en:'Solar',r:1},{k:'wind',re:/wind/i,c:'#18d2ff',it:'Eolico',en:'Wind',r:1},
     {k:'hydro',re:/hydro/i,c:'#4c8dff',it:'Idroelettrico',en:'Hydro',r:1},{k:'bio',re:/bio|geotherm/i,c:'#2bff88',it:'Bio & geotermico',en:'Bio & geothermal',r:1},
-    {k:'fossil',re:/gas|coal|lignite|oil|fossil/i,c:'#6b7a86',it:'Fossile',en:'Fossil',r:0},{k:'other',re:/.*/,c:'#8b7bff',it:'Altro',en:'Other',r:0}];
-  function loadMix(){return getJSON('https://api.energy-charts.info/public_power?country=it').then(function(j){
-      var ts=j.unix_seconds||[],pt=(j.production_types||[]).filter(function(p){return Array.isArray(p.data)&&!/load|share|consumption|cross border|import|export|pumped storage consumption|residual/i.test(p.name);});
-      if(!pt.length||!ts.length)throw 0;
-      var now=Date.now()/1000,k=-1;for(var x=0;x<ts.length;x++){if(ts[x]>now)break;var nn=0;pt.forEach(function(p){if(p.data[x]!=null)nn++;});if(nn>=Math.ceil(pt.length*0.6))k=x;}
-      if(k<0)throw 0;
-      var g={};MIXG.forEach(function(m){g[m.k]=0;});
-      pt.forEach(function(p){var v=Math.max(0,+p.data[k]||0);if(/storage/i.test(p.name)&&!/hydro/i.test(p.name))return;if(/pumped/i.test(p.name)){g.other+=v;return;}for(var i=0;i<MIXG.length;i++){if(MIXG[i].re.test(p.name)){g[MIXG[i].k]+=v;break;}}});
-      var tot=0;Object.keys(g).forEach(function(q){tot+=g[q];});if(tot<=0)throw 0;
-      DATA.mix={g:g,tot:tot,t:ts[k]};renderMix();}).catch(function(){DATA.mix=null;renderMix();});}
+    {k:'other',re:/.*/,c:'#8b7bff',it:'Altro',en:'Other',r:0},{k:'fossil',re:/gas|coal|lignite|oil|fossil/i,c:'#6b7a86',it:'Fossile',en:'Fossil',r:0}];
+  var MATCH_ORDER=['solar','wind','hydro','bio','fossil','other'];
+  function groupOf(name){if(/pumped/i.test(name))return'other';for(var i=0;i<MATCH_ORDER.length;i++){var m=MIXG.filter(function(x){return x.k===MATCH_ORDER[i];})[0];if(m.re.test(name))return m.k;}return'other';}
+  function parseGen(j){var ts=j.unix_seconds||[],pt=(j.production_types||[]).filter(function(p){return Array.isArray(p.data)&&!/load|share|consumption|cross border|import|export|residual/i.test(p.name)&&!(/storage/i.test(p.name)&&!/hydro/i.test(p.name));});
+    if(!ts.length||!pt.length)return null;var now=Date.now()/1000,out={ts:[],g:{},tot:[]};MIXG.forEach(function(m){out.g[m.k]=[];});
+    for(var x=0;x<ts.length;x++){if(ts[x]>now+60)break;var nn=0;pt.forEach(function(p){if(p.data[x]!=null)nn++;});if(nn<Math.ceil(pt.length*0.6))continue;
+      var row={};MIXG.forEach(function(m){row[m.k]=0;});pt.forEach(function(p){row[groupOf(p.name)]+=Math.max(0,+p.data[x]||0)/1000;});
+      var tot=0;MIXG.forEach(function(m){tot+=row[m.k];});if(tot<=0)continue;out.ts.push(ts[x]);out.tot.push(tot);MIXG.forEach(function(m){out.g[m.k].push(row[m.k]);});}
+    return out.ts.length?out:null;}
+  function loadGen(i){i=i||0;if(i>=ESRC.length){DATA.gen=null;renderGen();return Promise.resolve();}
+    return getJSON(ESRC[i]).then(function(j){var g=parseGen(j);if(!g)throw 0;DATA.gen=g;renderGen();}).catch(function(){return loadGen(i+1);});}
+  function renPct(g,i){var r=0;MIXG.forEach(function(m){if(m.r)r+=g.g[m.k][i];});return r/g.tot[i]*100;}
 
-  var pc=$('pricechart'),pctx=pc.getContext('2d'),hoverX=null;
-  function renderPrice(){if(DATA.price===undefined)return;var d=DATA.price,dpr=Math.min(window.devicePixelRatio||1,2),W=pc.clientWidth,H=pc.clientHeight;
-    $('pempty').hidden=!!d;pc.style.display=d?'block':'none';
-    if(!d){LIVE.price.v=null;paintLive();['pnow','pmin','pmax','pavg'].forEach(function(i){$(i).textContent='—';});return;}
+  var pc=$('genchart'),pctx=pc.getContext('2d'),hoverX=null;
+  function renderGen(){var d=DATA.gen;if(d===undefined)return;
+    $('pempty').hidden=!!d;pc.style.display=d?'block':'none';$('mempty').hidden=!!d;$('mixw').style.display=d?'':'none';
+    if(!d){LIVE.ren.v=LIVE.solar.v=LIVE.load.v=null;paintLive();['pnow','pmin','pmax','pavg'].forEach(function(i){$(i).textContent='—';});return;}
+    var n=d.ts.length-1,rp=renPct(d,n),avg=0;for(var i=0;i<=n;i++)avg+=renPct(d,i);avg/=(n+1);
+    var sp=0,spi=0;d.g.solar.forEach(function(v,i){if(v>sp){sp=v;spi=i;}});
+    $('pnow').textContent=fmtN(rp)+'%';$('pmin').textContent=fmtN(d.tot[n],1)+' GW';$('pmax').textContent=sp>0?fmtN(sp,1)+' GW · '+hhmm(d.ts[spi]):'—';$('pavg').textContent=fmtN(avg)+'%';
+    $('pupd').textContent=T('agg. ','upd. ')+hhmm(d.ts[n]);$('mupd').textContent=hhmm(d.ts[n]);
+    LIVE.ren.v=fmtN(rp)+'%';LIVE.solar.v=d.g.solar[n]>0.05?fmtN(d.g.solar[n],1)+' GW':null;LIVE.load.v=fmtN(d.tot[n],1)+' GW';paintLive();
+    /* donut */
+    var C=2*Math.PI*70,off=0,segs='',leg='';
+    MIXG.forEach(function(m){var v=d.g[m.k][n];if(v<=0)return;var f=v/d.tot[n],len=f*C;
+      segs+='<circle cx="100" cy="100" r="70" stroke="'+m.c+'" stroke-dasharray="'+Math.max(0,len-1.5).toFixed(2)+' '+(C-len+1.5).toFixed(2)+'" stroke-dashoffset="'+(-off).toFixed(2)+'"><title>'+esc(T(m.it,m.en))+'</title></circle>';off+=len;
+      leg+='<div><i style="background:'+m.c+'"></i>'+esc(T(m.it,m.en))+'<span>'+fmtN(v,1)+' GW · '+fmtN(f*100)+'%</span></div>';});
+    $('dseg').innerHTML=segs;$('mixleg').innerHTML=leg;$('dren').textContent=fmtN(rp)+'%';$('drenl').textContent=T('rinnovabili','renewables');
+    $('glegend').innerHTML=MIXG.map(function(m){return'<span><i style="background:'+m.c+'"></i>'+esc(T(m.it,m.en))+'</span>';}).join('');
+    drawGen();}
+  function drawGen(){var d=DATA.gen;if(!d)return;var dpr=Math.min(window.devicePixelRatio||1,2),W=pc.clientWidth,H=pc.clientHeight;
     pc.width=W*dpr;pc.height=H*dpr;pctx.setTransform(dpr,0,0,dpr,0,0);pctx.clearRect(0,0,W,H);
-    var pts=[];d.ts.forEach(function(t,i){if(d.p[i]!=null)pts.push([t,d.p[i]]);});if(pts.length<2)return;
-    var vals=pts.map(function(q){return q[1];}),mn=Math.min.apply(null,vals),mx=Math.max.apply(null,vals),avg=vals.reduce(function(a,b){return a+b;},0)/vals.length;
-    var ni=lastIdx(d.ts,d.p),cur=ni>=0?d.p[ni]:null;
-    $('pmin').textContent=fmtN(mn,1);$('pmax').textContent=fmtN(mx,1);$('pavg').textContent=fmtN(avg,1);$('pnow').textContent=cur!=null?fmtN(cur,1):'—';
-    LIVE.price.v=cur!=null?fmtN(cur,1)+' €/MWh':null;paintLive();$('pupd').textContent='€/MWh';
-    var L=46,R=12,Tp=12,B=26,t0=pts[0][0],t1=pts[pts.length-1][0],lo=Math.min(0,mn-(mx-mn)*.1),hi=mx+(mx-mn)*.12||mx+1;
-    var X=function(t){return L+(t-t0)/(t1-t0||1)*(W-L-R);},Y=function(v){return Tp+(1-(v-lo)/(hi-lo))*(H-Tp-B);};
+    var L=44,R=12,Tp=12,B=26,day0=new Date(d.ts[0]*1000);day0.setHours(0,0,0,0);var t0=day0.getTime()/1000,t1=t0+86400;
+    var hi=Math.max.apply(null,d.tot)*1.12||1;
+    var X=function(t){return L+(t-t0)/(t1-t0)*(W-L-R);},Y=function(v){return Tp+(1-v/hi)*(H-Tp-B);};
     pctx.font='11px Consolas,monospace';pctx.fillStyle='rgba(134,160,166,.9)';pctx.strokeStyle='rgba(255,255,255,.06)';pctx.lineWidth=1;
-    for(var g=0;g<=4;g++){var v=lo+(hi-lo)*g/4,yy=Y(v);pctx.beginPath();pctx.moveTo(L,yy);pctx.lineTo(W-R,yy);pctx.stroke();pctx.fillText(Math.round(v),6,yy+4);}
-    for(var hr=0;hr<=24;hr+=3){var tt=t0+hr*3600;if(tt>t1+1)break;var xx=X(tt);pctx.fillText(('0'+hr).slice(-2)+':00',xx-16,H-8);}
-    var grd=pctx.createLinearGradient(0,Tp,0,H-B);grd.addColorStop(0,'rgba('+C1+',.32)');grd.addColorStop(1,'rgba('+C1+',0)');
-    pctx.beginPath();pts.forEach(function(q,i){var px=X(q[0]),py=Y(q[1]);if(i===0)pctx.moveTo(px,py);else pctx.lineTo(px,py);});
-    pctx.lineTo(X(pts[pts.length-1][0]),H-B);pctx.lineTo(X(pts[0][0]),H-B);pctx.closePath();pctx.fillStyle=grd;pctx.fill();
-    pctx.beginPath();pts.forEach(function(q,i){var px=X(q[0]),py=Y(q[1]);if(i===0)pctx.moveTo(px,py);else pctx.lineTo(px,py);});
-    pctx.strokeStyle='rgb('+C1+')';pctx.lineWidth=2;pctx.shadowColor='rgb('+C1+')';pctx.shadowBlur=8;pctx.stroke();pctx.shadowBlur=0;
-    var ay=Y(avg);pctx.setLineDash([4,5]);pctx.strokeStyle='rgba('+C2+',.6)';pctx.lineWidth=1;pctx.beginPath();pctx.moveTo(L,ay);pctx.lineTo(W-R,ay);pctx.stroke();pctx.setLineDash([]);
-    if(ni>=0){var nx=X(d.ts[ni]),ny=Y(cur);pctx.strokeStyle='rgba(255,178,56,.7)';pctx.setLineDash([3,4]);pctx.beginPath();pctx.moveTo(nx,Tp);pctx.lineTo(nx,H-B);pctx.stroke();pctx.setLineDash([]);
-      pctx.fillStyle='#ffb238';pctx.beginPath();pctx.arc(nx,ny,5,0,6.283);pctx.fill();pctx.fillStyle='rgba(255,178,56,.25)';pctx.beginPath();pctx.arc(nx,ny,11,0,6.283);pctx.fill();}
-    if(hoverX!=null&&hoverX>=L&&hoverX<=W-R){var tH=t0+(hoverX-L)/(W-L-R)*(t1-t0),bi=0,bd=1e12;pts.forEach(function(q,i){var dd=Math.abs(q[0]-tH);if(dd<bd){bd=dd;bi=i;}});
-      var q=pts[bi],hx=X(q[0]),hy=Y(q[1]);pctx.strokeStyle='rgba(255,255,255,.35)';pctx.beginPath();pctx.moveTo(hx,Tp);pctx.lineTo(hx,H-B);pctx.stroke();
-      pctx.fillStyle='rgb('+C1+')';pctx.beginPath();pctx.arc(hx,hy,4,0,6.283);pctx.fill();
-      var lab=hhmm(q[0])+'  '+fmtN(q[1],1)+' €/MWh',tw=pctx.measureText(lab).width+16,bx=Math.min(Math.max(hx-tw/2,L),W-R-tw);
-      pctx.fillStyle='rgba(4,7,11,.92)';pctx.strokeStyle='rgba('+C1+',.6)';pctx.beginPath();pctx.rect(bx,Tp,tw,22);pctx.fill();pctx.stroke();pctx.fillStyle='#e4f2ec';pctx.fillText(lab,bx+8,Tp+15);}}
-  pc.addEventListener('mousemove',function(e){var r=pc.getBoundingClientRect();hoverX=e.clientX-r.left;renderPrice();});
-  pc.addEventListener('mouseleave',function(){hoverX=null;renderPrice();});
+    for(var g=0;g<=4;g++){var v=hi*g/4,yy=Y(v);pctx.beginPath();pctx.moveTo(L,yy);pctx.lineTo(W-R,yy);pctx.stroke();pctx.fillText(Math.round(v)+'',8,yy+4);}
+    pctx.fillText('GW',8,Tp-2>8?Tp-2:10);
+    for(var hr=0;hr<=24;hr+=3){var xx=X(t0+hr*3600);pctx.fillText(('0'+hr).slice(-2)+':00',xx-16,H-8);}
+    var base=d.ts.map(function(){return 0;});
+    MIXG.forEach(function(m){var top=base.map(function(b,i){return b+d.g[m.k][i];});
+      pctx.beginPath();d.ts.forEach(function(t,i){var px=X(t),py=Y(top[i]);if(i===0)pctx.moveTo(px,py);else pctx.lineTo(px,py);});
+      for(var i=d.ts.length-1;i>=0;i--)pctx.lineTo(X(d.ts[i]),Y(base[i]));pctx.closePath();
+      pctx.fillStyle=m.c+'b3';pctx.fill();pctx.strokeStyle=m.c;pctx.lineWidth=1;pctx.beginPath();d.ts.forEach(function(t,i){var px=X(t),py=Y(top[i]);if(i===0)pctx.moveTo(px,py);else pctx.lineTo(px,py);});pctx.stroke();base=top;});
+    var nx=X(d.ts[d.ts.length-1]);pctx.strokeStyle='rgba(255,255,255,.5)';pctx.setLineDash([3,4]);pctx.beginPath();pctx.moveTo(nx,Tp);pctx.lineTo(nx,H-B);pctx.stroke();pctx.setLineDash([]);
+    pctx.fillStyle='rgb('+C1+')';pctx.fillText(T('ora','now'),Math.min(nx+4,W-R-26),Tp+10);
+    if(hoverX!=null&&hoverX>=L&&hoverX<=W-R){var tH=t0+(hoverX-L)/(W-L-R)*(t1-t0),bi=0,bd=1e12;d.ts.forEach(function(t,i){var dd=Math.abs(t-tH);if(dd<bd){bd=dd;bi=i;}});
+      var hx=X(d.ts[bi]);pctx.strokeStyle='rgba(255,255,255,.45)';pctx.beginPath();pctx.moveTo(hx,Tp);pctx.lineTo(hx,H-B);pctx.stroke();
+      var lines=[hhmm(d.ts[bi])+' · '+fmtN(d.tot[bi],1)+' GW · '+T('rinn. ','ren. ')+fmtN(renPct(d,bi))+'%'];
+      MIXG.slice().reverse().forEach(function(m){if(d.g[m.k][bi]>0.05)lines.push('■ '+T(m.it,m.en)+' '+fmtN(d.g[m.k][bi],1)+' GW');});
+      var tw=0;lines.forEach(function(s){tw=Math.max(tw,pctx.measureText(s).width);});tw+=18;var th=lines.length*15+10,bx=hx+12+tw>W-R?hx-12-tw:hx+12;
+      pctx.fillStyle='rgba(4,7,11,.94)';pctx.strokeStyle='rgba('+C1+',.6)';pctx.beginPath();pctx.rect(bx,Tp,tw,th);pctx.fill();pctx.stroke();
+      lines.forEach(function(s,i){var m=i?MIXG.slice().reverse().filter(function(q){return d.g[q.k][bi]>0.05;})[i-1]:null;pctx.fillStyle=m?m.c:'#e4f2ec';pctx.fillText(s,bx+9,Tp+18+i*15);});}}
+  pc.addEventListener('mousemove',function(e){var r=pc.getBoundingClientRect();hoverX=e.clientX-r.left;drawGen();});
+  pc.addEventListener('mouseleave',function(){hoverX=null;drawGen();});
 
-  function renderMix(){var d=DATA.mix;if(d===undefined)return;$('mempty').hidden=!!d;$('mixw').style.display=d?'':'none';
-    if(!d){LIVE.ren.v=LIVE.solar.v=null;paintLive();return;}
-    var C=2*Math.PI*70,off=0,segs='',leg='',ren=0;
-    MIXG.forEach(function(m){var v=d.g[m.k];if(m.r)ren+=v;if(v<=0)return;var f=v/d.tot,len=f*C;
-      segs+='<circle cx="100" cy="100" r="70" stroke="'+m.c+'" stroke-dasharray="'+(len-1.5).toFixed(2)+' '+(C-len+1.5).toFixed(2)+'" stroke-dashoffset="'+(-off).toFixed(2)+'"><title>'+esc(T(m.it,m.en))+'</title></circle>';off+=len;
-      leg+='<div><i style="background:'+m.c+'"></i>'+esc(T(m.it,m.en))+'<span>'+fmtN(v/1000,1)+' GW · '+fmtN(f*100)+'%</span></div>';});
-    $('dseg').innerHTML=segs;$('mixleg').innerHTML=leg;var rp=ren/d.tot*100;
-    $('dren').textContent=fmtN(rp)+'%';$('drenl').textContent=T('rinnovabili','renewables');$('mupd').textContent=hhmm(d.t);
-    LIVE.ren.v=fmtN(rp)+'%';LIVE.solar.v=d.g.solar>0?fmtN(d.g.solar/1000,1)+' GW':null;paintLive();}
-
-  var dataStarted=false;
-  function loadAll(){loadMeteo();loadPrice();loadMix();}
-  function startData(){if(dataStarted)return;dataStarted=true;loadAll();setInterval(loadAll,10*60*1000);}
-  startData();
-  var prt;window.addEventListener('resize',function(){clearTimeout(prt);prt=setTimeout(renderPrice,150);});
-  onLang.push(function(){paintLive();renderMeteo();renderPrice();renderMix();});
-  DP.onTheme.push(function(){renderPrice();});
+  function loadAll(){loadMeteo();loadGen();}
+  loadAll();setInterval(loadAll,15*60*1000);
+  var prt;window.addEventListener('resize',function(){clearTimeout(prt);prt=setTimeout(drawGen,150);});
+  onLang.push(function(){paintLive();renderMeteo();renderGen();});
+  DP.onTheme.push(function(){drawGen();});
 
   /* ---------- circuit background ---------- */
   var cv=$('circuit'),cx=cv.getContext('2d'),off=document.createElement('canvas'),ox=off.getContext('2d');
