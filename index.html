@@ -23,6 +23,8 @@
 <meta name="twitter:description" content="Energia, dati, automazione, AI generativa e stampa 3D.">
 <meta name="twitter:image" content="https://sonostatoio.github.io/site/og-image.png">
 <meta name="theme-color" content="#04070b">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://sonostatoio.github.io/site/#daniele","name":"Daniele Petricone","jobTitle":"Senior Digital & Innovation Expert","description":"Senior Digital & Innovation Expert with 15+ years across energy markets, data analytics and digital transformation: Microsoft Power Platform, data integration, Generative AI and Microsoft Copilot.","worksFor":{"@type":"Organization","name":"ENGIE Italia S.p.A.","url":"https://www.engie.it"},"address":{"@type":"PostalAddress","addressLocality":"Roma","addressCountry":"IT"},"image":"https://sonostatoio.github.io/site/og-image.png","url":"https://sonostatoio.github.io/site/","sameAs":["https://www.linkedin.com/in/dpetricone","https://makerworld.com/it/@daniele_lf","https://github.com/SonoStatoIo"],"knowsLanguage":["it","en"],"knowsAbout":["Digital transformation","Business process analysis","Microsoft Power Platform","Power Apps","Power Automate","Power BI","Power Query","SharePoint","Generative AI","Microsoft Copilot","Python","SQL","VBA","Data analytics","Forecasting","Energy markets","Power portfolio management","Virtual Power Plant","3D printing","Autodesk Fusion","Blender"]},{"@type":"ProfilePage","@id":"https://sonostatoio.github.io/site/#page","url":"https://sonostatoio.github.io/site/","name":"Daniele Petricone — Senior Digital & Innovation Expert","inLanguage":["it","en"],"mainEntity":{"@id":"https://sonostatoio.github.io/site/#daniele"}}]}</script>
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADrklEQVR4nO2bS0wTQRjH/33RtVQKEixgSYjPqFGjHMCbiYkaxQQPRm+mMfHOwcSDnvBAgndvNoqKxAMclIsh8SI+DhKCNgGUoG1TkKB0abstbXc9UbrT7XZbdmfbbH+nndl5fN+/8810d2eAGjV05bgwKOjZv0mvjqUc/266R90e6h0q+cVpCkGto0KOzzEDOJJ4IFmHhhBUBJByfo4ZyCsnJYTWImjauFLHSWgKoUmjcsNdKbTCQtXG1HCcRGshVGlEC8dJtBJiR5VpOE6ithBlVdLDcRK1hCipcCU4TrJTIRQLUO6SRotyl86iBSrdcZJShSh4oxKHu1JKCYu8jGp2nESJENZijVSj41ts2V5ICAAwK2mg2pHzQ1YAI1ATQG8D9MbwAhRdBUrB5T2N1se92bSQ5sFHEkiHNsB9CoJ9NQtuKpBvhNuJA7/68/L5eAqZtTg2/auITiyAHZ4BH0+pabK6ApCYrGZYmh2wNDtgP+lG450uRN/MI+wdA7+xWbS+2WGD2eGCrcOF+osHsaf/LAKXhpFaWlfNRuoh4Ow9jH2vb5T1HGrrbETb02uq2qOpAAutQ1hoHkTwygsk/avZfMe5TjTcPFGwXtg7jjlmAD/aHyF49SVSi/+y93Z1e2A/1qKajZqPAD6WQmxyEcHLz8HHtuO38faZonUzfznE3v3E6v1JUb79VKtq9lELgfRyFBtj/mya6fHAxCibgjZzRgAAmF121eyiOgckPgaz1yarWfFQrtvfJErzkaRqNmm6CpCkAhFR2uJ2ypa3NDFgutrR8vC8KD85s6yaTVQF4KPipc/SID2U23x9aPP1Sd7jvoREE+pOobsMmsRrnyCU9mU8tbSO8K0xNS2iOwLMzjpRmmflY1ng0sisxZH0ryI6MQ/2WZX9EySxdTSI0pmVmGS5sHcc7MgsDZPohgDT48leC2keSf8fmt1LQk0Aq9uJ3X1Hs2luKgAhmaHVfUE0DwFzvQ1Mtwd7hy6I5oDIk69ad60ITQU4tHxXMj/+fgns6Dctu1YM9afB6Nt5hK6PArruDdtG2xDICMhEEkiHWHCfQ2BHZsF9+K1pl6WiqgAR3zQivumS66VXorq9gjf8O8GaAHoboDeyAsh9U6sm5PwoOgluVa7G74RKfsDa/oBijRl2hwhJpQuh2R6hXCoxLKjtEsulEoTQZZ8giWF3ipIYdq8wiWF3i5MY9rwAiWFPjJAY9sxQLoY+NZaLYc8NklTKyVHd0fvssOH5D0RqpenLi8dUAAAAAElFTkSuQmCC">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 <style>
@@ -373,7 +375,7 @@ nav.menu-open #menubtn span:nth-child(3){transform:translateY(-6px) rotate(-45de
   .lg-full{display:none}.lg-short{display:inline}
   .nav-r{gap:6px}
   .nbtn{padding:5px 8px}
-  #themebtn .tl{display:none}
+  
   .lang button{padding:5px 8px}
   .hero{min-height:100svh;padding:88px 6vw 120px;gap:28px}
   .hero-wrap{min-height:100svh}
@@ -444,6 +446,42 @@ nav.menu-open #menubtn span:nth-child(3){transform:translateY(-6px) rotate(-45de
   .meteo .kpi{display:flex;justify-content:space-between;align-items:center}
 }
 @media (max-width:760px) and (hover:none){.vhint{inset-block-start:auto;inset-block-end:52px;inset-inline-end:10px}}
+
+/* theme switcher */
+.themesw{position:relative}
+#themebtn{display:inline-flex;align-items:center;gap:7px;padding:5px 10px 5px 8px}
+#themebtn .pal{width:16px;height:16px;flex:none;color:var(--green)}
+#themebtn .tlab{color:var(--muted);font-weight:600}
+#themebtn .tlab::after{content:":"}
+.tdot{width:11px;height:11px;border-radius:50%;flex:none;background:linear-gradient(135deg,var(--green),var(--cyan));box-shadow:0 0 8px var(--green)}
+#themebtn .tcar{color:var(--muted);font-size:.7rem;transition:transform .2s}
+#themebtn[aria-expanded="true"]{border-color:var(--green)}
+#themebtn[aria-expanded="true"] .tcar{transform:rotate(180deg)}
+.tmenu{position:absolute;inset-block-start:calc(100% + 8px);inset-inline-end:0;width:250px;background:rgba(6,11,17,.98);border:1px solid var(--line);border-radius:12px;padding:8px;box-shadow:0 20px 50px -12px rgba(0,0,0,.85);z-index:35;animation:pop .18s ease}
+.tmenu[hidden]{display:none}
+.tmh{font-family:var(--mono);font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;padding:6px 8px 8px;border-block-end:1px solid var(--line2);margin-bottom:6px}
+.topt{display:flex;align-items:center;gap:11px;width:100%;background:none;border:1px solid transparent;border-radius:9px;padding:9px 8px;color:var(--ink);cursor:pointer;text-align:start;transition:background .15s,border-color .15s}
+.topt:hover,.topt:focus-visible{background:rgba(255,255,255,.05);outline:none}
+.topt[aria-checked="true"]{border-color:var(--line);background:rgba(255,255,255,.04)}
+.topt .sw{width:34px;height:22px;border-radius:6px;flex:none;border:1px solid rgba(255,255,255,.15)}
+.topt b{display:block;font-size:.88rem}
+.topt small{display:block;font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.topt .ck{margin-inline-start:auto;color:var(--green);font-weight:800;visibility:hidden}
+.topt[aria-checked="true"] .ck{visibility:visible}
+.tmf{font-family:var(--mono);font-size:.66rem;color:var(--muted);padding:8px 8px 2px;border-block-start:1px solid var(--line2);margin-top:6px}
+.thint{position:absolute;inset-block-start:calc(100% + 10px);inset-inline-end:0;white-space:nowrap;background:var(--green);color:#03140a;font-weight:700;font-size:.78rem;padding:7px 11px;border-radius:8px;box-shadow:0 8px 24px -6px color-mix(in srgb,var(--green) 70%,transparent);animation:pop .25s ease,bob 1.6s ease-in-out .3s infinite;cursor:pointer;z-index:34}
+.thint[hidden]{display:none}
+.thint::before{content:"";position:absolute;inset-block-start:-5px;inset-inline-end:22px;width:10px;height:10px;background:var(--green);transform:rotate(45deg)}
+@keyframes bob{50%{transform:translateY(3px)}}
+#themebtn.pulse{animation:tpulse 1.4s ease-in-out 3}
+@keyframes tpulse{50%{box-shadow:0 0 0 4px color-mix(in srgb,var(--green) 35%,transparent)}}
+@media (max-width:760px){
+  #themebtn .tlab,#themebtn .tname{display:none}
+  #themebtn{gap:5px;padding:5px 7px}
+  .tmenu{position:fixed;inset-block-start:56px;inset-inline:4vw;width:auto}
+  .thint{position:fixed;inset-block-start:58px;inset-inline-end:4vw}
+  .thint::before{inset-inline-end:110px}
+}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.printing{clip-path:none}#tchart .bar{transform:none}}
 @media print{#circuit,#glow,nav,#boot,.ticker,#progress,.horizon,#tx,.viewer,#data,#ask{display:none}.reveal{opacity:1;transform:none}.printing{clip-path:none}.job-b{max-height:none!important}}
 </style>
@@ -467,7 +505,14 @@ nav.menu-open #menubtn span:nth-child(3){transform:translateY(-6px) rotate(-45de
     <a href="#contact"><span data-l="it">contatti</span><span data-l="en">contact</span></a>
   </div>
   <div class="nav-r">
-    <button type="button" class="nbtn" id="themebtn" title="Tema / Theme">⚡ energia</button>
+    <div class="themesw" id="themesw">
+      <button type="button" class="nbtn" id="themebtn" aria-haspopup="menu" aria-expanded="false" aria-controls="tmenu">
+        <svg class="pal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1 0 1.6-.8 1.6-1.7 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.8-1.7 1.7-1.7H16a5 5 0 0 0 5-5C21 6.4 17 3 12 3z"/><circle cx="7.5" cy="11" r="1.2" fill="currentColor"/><circle cx="10.5" cy="7.5" r="1.2" fill="currentColor"/><circle cx="15" cy="7.5" r="1.2" fill="currentColor"/></svg>
+        <span class="tlab"><span data-l="it">Tema</span><span data-l="en">Theme</span></span><i class="tdot" aria-hidden="true"></i><span class="tname" id="tname"></span><span class="tcar" aria-hidden="true">▾</span>
+      </button>
+      <div class="tmenu" id="tmenu" role="menu" hidden></div>
+      <div class="thint" id="thint" hidden><span data-l="it">🎨 Prova un altro tema del sito</span><span data-l="en">🎨 Try another site theme</span></div>
+    </div>
     <button type="button" class="nbtn" id="txbtn" title="Terminal (T)">&gt;_</button>
     <button type="button" class="nbtn" id="menubtn" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
     <div class="lang" role="group" aria-label="Language">
@@ -857,16 +902,33 @@ nav.menu-open #menubtn span:nth-child(3){transform:translateY(-6px) rotate(-45de
   setTimeout(function(){boot.classList.add('done');},3500);
 
   /* ---------- theme ---------- */
-  var THEMES=['energy','print','code'],TNAME={energy:'⚡ energia',print:'⬢ stampa3d',code:'</> codice'},TNAME_EN={energy:'⚡ energy',print:'⬢ 3d-print',code:'</> code'};
+  var THEMES=['energy','print','code'];
+  var TINFO={energy:{it:'Energia',en:'Energy',dit:'verde · rinnovabili',den:'green · renewables',sw:'linear-gradient(135deg,#2bff88,#18d2ff)'},
+             print:{it:'Stampa 3D',en:'3D print',dit:'ambra · filamento',den:'amber · filament',sw:'linear-gradient(135deg,#ffb238,#ff6b3d)'},
+             code:{it:'Codice',en:'Code',dit:'terminale retrò',den:'retro terminal',sw:'linear-gradient(135deg,#39ff14,#00e5a0)'}};
   var C1='43,255,136',C2='24,210,255';
   function hex2rgb(h){h=h.trim().replace('#','');if(h.length===3)h=h.split('').map(function(c){return c+c;}).join('');var n=parseInt(h,16);return((n>>16)&255)+','+((n>>8)&255)+','+(n&255);}
   function readColors(){var cs=getComputedStyle(body);C1=hex2rgb(cs.getPropertyValue('--green'));C2=hex2rgb(cs.getPropertyValue('--cyan'));
     $('gg1').setAttribute('stop-color','rgb('+C1+')');$('gg2').setAttribute('stop-color','rgb('+C2+')');}
-  function setTheme(t,silent){if(THEMES.indexOf(t)<0)t='energy';if(t==='energy')body.removeAttribute('data-theme');else body.setAttribute('data-theme',t);
+  var tmenu=$('tmenu'),tbtn=$('themebtn'),thint=$('thint');
+  function paintTheme(){var t=DP.theme||'energy',I=TINFO[t];$('tname').textContent=lang==='en'?I.en:I.it;
+    tbtn.title=T('Tema del sito: ','Site theme: ')+(lang==='en'?I.en:I.it)+T(' — clicca per cambiarlo',' — click to change it');
+    tbtn.setAttribute('aria-label',tbtn.title);
+    var h='<div class="tmh">'+T('Tema del sito','Site theme')+'</div>';
+    THEMES.forEach(function(k){var x=TINFO[k];h+='<button type="button" class="topt" role="menuitemradio" data-t="'+k+'" aria-checked="'+(k===t)+'"><span class="sw" style="background:'+x.sw+'"></span><span><b>'+esc(lang==='en'?x.en:x.it)+'</b><small>'+esc(lang==='en'?x.den:x.dit)+'</small></span><span class="ck">✓</span></button>';});
+    h+='<div class="tmf">'+T('La scelta viene ricordata · anche da terminale: theme','Your choice is remembered · also via terminal: theme')+'</div>';
+    tmenu.innerHTML=h;
+    tmenu.querySelectorAll('.topt').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();setTheme(b.dataset.t);openTM(false);});});}
+  function openTM(o){tmenu.hidden=!o;tbtn.setAttribute('aria-expanded',o?'true':'false');if(o){hideHint();var c=tmenu.querySelector('[aria-checked="true"]');if(c)c.focus({preventScroll:true});}}
+  function hideHint(){thint.hidden=true;tbtn.classList.remove('pulse');store('dp-theme-hint','1');}
+  tbtn.addEventListener('click',function(e){e.stopPropagation();openTM(tmenu.hidden);});
+  thint.addEventListener('click',function(e){e.stopPropagation();openTM(true);});
+  document.addEventListener('click',function(e){if(!tmenu.hidden&&!$('themesw').contains(e.target))openTM(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!tmenu.hidden){openTM(false);tbtn.focus();}});
+  function setTheme(t){if(THEMES.indexOf(t)<0)t='energy';if(t==='energy')body.removeAttribute('data-theme');else body.setAttribute('data-theme',t);
     store('dp-theme',t);DP.theme=t;paintTheme();readColors();
     if(DP.onTheme)DP.onTheme.forEach(function(f){f();});}
-  function paintTheme(){var s=(lang==='en'?TNAME_EN:TNAME)[DP.theme||'energy'],sp=s.indexOf(' ');$('themebtn').innerHTML=esc(s.slice(0,sp))+'<span class="tl"> '+esc(s.slice(sp+1))+'</span>';}
-  $('themebtn').addEventListener('click',function(){setTheme(THEMES[(THEMES.indexOf(DP.theme||'energy')+1)%3]);});
+  if(!store('dp-theme-hint')&&!store('dp-theme')){setTimeout(function(){if(!tmenu.hidden)return;thint.hidden=false;tbtn.classList.add('pulse');setTimeout(function(){if(!thint.hidden){thint.hidden=true;tbtn.classList.remove('pulse');}},7000);},4200);}
   DP.setTheme=setTheme;DP.onTheme=[];
 
   /* ---------- language ---------- */
