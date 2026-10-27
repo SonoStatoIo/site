@@ -349,6 +349,101 @@ footer b{color:var(--green);font-weight:400}
 .txin span{color:var(--green);white-space:nowrap}
 .txin input{flex:1;background:none;border:0;outline:none;color:var(--ink);font:inherit;caret-color:var(--green)}
 
+
+/* ===== responsive / mobile ===== */
+.lg-short{display:none}
+#menubtn{display:none;width:36px;height:30px;padding:0;flex-direction:column;justify-content:center;align-items:center;gap:4px}
+#menubtn span{display:block;width:16px;height:2px;background:currentColor;border-radius:2px;transition:transform .25s,opacity .25s}
+nav.menu-open #menubtn span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+nav.menu-open #menubtn span:nth-child(2){opacity:0}
+nav.menu-open #menubtn span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.hint-touch{display:none}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.swipe-hint{display:none;font-family:var(--mono);font-size:.7rem;color:var(--muted);text-align:center;margin-top:6px}
+@media (hover:none){.hint-key{display:none}.hint-touch{display:inline}}
+@media (max-width:1100px){
+  #menubtn{display:inline-flex}
+  .navlinks{position:fixed;inset-block-start:56px;inset-inline:0;flex-direction:column;align-items:stretch;gap:0;padding:8px 5vw 16px;background:rgba(4,7,11,.97);backdrop-filter:blur(14px);border-block-end:1px solid var(--line);transform:translateY(-12px);opacity:0;visibility:hidden;transition:opacity .25s,transform .25s,visibility .25s;max-height:calc(100dvh - 56px);overflow-y:auto}
+  nav.menu-open .navlinks{transform:none;opacity:1;visibility:visible}
+  .navlinks a{display:block!important;padding:13px 4px;font-size:.95rem;border-block-end:1px solid var(--line2)}
+  nav.menu-open{background:rgba(4,7,11,.97);border-color:var(--line)}
+}
+@media (max-width:760px){
+  nav{padding:10px 4vw}
+  .lg-full{display:none}.lg-short{display:inline}
+  .nav-r{gap:6px}
+  .nbtn{padding:5px 8px}
+  #themebtn .tl{display:none}
+  .lang button{padding:5px 8px}
+  .hero{min-height:100svh;padding:88px 6vw 120px;gap:28px}
+  .hero-wrap{min-height:100svh}
+  h1{font-size:clamp(2.5rem,13vw,3.6rem);letter-spacing:-1px;margin:12px 0}
+  .role{font-size:.9rem;min-height:3.6em}
+  .lead{font-size:.98rem}
+  .hud-row{gap:7px;margin-top:18px}
+  .hud{font-size:.7rem;padding:5px 9px}
+  .cta{gap:10px;margin-top:22px}
+  .cta .btn{flex:1 1 auto;justify-content:center}
+  .photo-wrap{width:min(200px,52vw)}
+  .bracket{width:22px;height:22px}
+  .horizon{height:110px}
+  section{padding:64px 5vw}
+  .sec-head{margin-bottom:30px}
+  h2{font-size:clamp(1.75rem,8vw,2.4rem)}
+  .term-b{padding:18px 16px}
+  .term-b p{font-size:.97rem}
+  .quote{font-size:1.05rem;padding:18px}
+  .gauges{gap:10px}
+  .gauge{flex-direction:column;align-items:flex-start;gap:8px;padding:14px}
+  .gauge svg{width:52px;height:52px}
+  .gauge .n{font-size:1.25rem}
+  #tchart{min-width:760px}
+  .swipe-hint{display:block}
+  .tchart .term-h .rt{display:none}
+  .legend{gap:10px;font-size:.68rem}
+  .timeline{padding-inline-start:30px}
+  .timeline::before{inset-inline-start:7px}
+  .timeline::after{inset-inline-start:4px}
+  .job::before{inset-inline-start:-30px;inset-block-start:20px;width:16px;height:16px}
+  .job::after{display:none}
+  .job-h{padding:14px;gap:10px}
+  .job-h h3{font-size:1rem}
+  .job-b ul{padding:0 14px 16px 32px}
+  .job-b li{font-size:.92rem}
+  .skills-wrap{gap:26px}
+  .keys span{font-size:.74rem;padding:7px 10px}
+  #chatlog{height:300px}
+  .msg{max-width:94%;font-size:.92rem}
+  .inrow input,textarea,#txin{font-size:16px}
+  .mrow .btn{flex:1 1 auto;justify-content:center}
+  .mring{width:104px;height:104px}
+  .pc-wrap{height:240px}
+  .kpi{padding:9px 10px}
+  .kpi b{font-size:.95rem}
+  .meteo{gap:8px}
+  .meteo .kpi b{font-size:1.05rem}
+  #donut{width:150px;height:150px}
+  .mixleg{width:100%}
+  .maker{padding:20px;gap:22px;border-radius:16px}
+  .viewer{height:340px}
+  .vctl{gap:6px;inset-block-end:10px;inset-inline:10px}
+  .vctl button{padding:6px 8px;font-size:.68rem}
+  .contact{padding-block:80px}
+  footer{padding:22px 5vw calc(22px + env(safe-area-inset-bottom))}
+  #tx{padding:0;align-items:flex-end}
+  #tx .win{width:100%;height:82dvh;border-radius:14px 14px 0 0;border-block-end:0}
+  #txout{font-size:.78rem;padding:12px}
+  .txin{padding:10px 12px calc(10px + env(safe-area-inset-bottom))}
+  .txin span{font-size:.72rem}
+  #boot pre{min-width:0;font-size:.74rem;padding:0 6vw}
+  #ttip{max-width:240px}
+}
+@media (max-width:380px){
+  .hud-row .hud:nth-child(2){display:none}
+  .meteo{grid-template-columns:1fr}
+  .meteo .kpi{display:flex;justify-content:space-between;align-items:center}
+}
+@media (max-width:760px) and (hover:none){.vhint{inset-block-start:auto;inset-block-end:52px;inset-inline-end:10px}}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.printing{clip-path:none}#tchart .bar{transform:none}}
 @media print{#circuit,#glow,nav,#boot,.ticker,#progress,.horizon,#tx,.viewer,#data,#ask{display:none}.reveal{opacity:1;transform:none}.printing{clip-path:none}.job-b{max-height:none!important}}
 </style>
@@ -361,8 +456,8 @@ footer b{color:var(--green);font-weight:400}
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="gg" x1="0" x2="1"><stop id="gg1" offset="0" stop-color="#2bff88"/><stop id="gg2" offset="1" stop-color="#18d2ff"/></linearGradient></defs></svg>
 
 <nav id="nav">
-  <a href="#home" class="logo"><b>&gt;</b>daniele.petricone<span class="cur"></span></a>
-  <div class="navlinks">
+  <a href="#home" class="logo"><b>&gt;</b><span class="lg-full">daniele.petricone</span><span class="lg-short">dp</span><span class="cur"></span></a>
+  <div class="navlinks" id="navlinks">
     <a href="#about"><span data-l="it">chi_sono</span><span data-l="en">about</span></a>
     <a href="#journey"><span data-l="it">percorso</span><span data-l="en">journey</span></a>
     <a href="#skills"><span data-l="it">competenze</span><span data-l="en">skills</span></a>
@@ -374,6 +469,7 @@ footer b{color:var(--green);font-weight:400}
   <div class="nav-r">
     <button type="button" class="nbtn" id="themebtn" title="Tema / Theme">⚡ energia</button>
     <button type="button" class="nbtn" id="txbtn" title="Terminal (T)">&gt;_</button>
+    <button type="button" class="nbtn" id="menubtn" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
     <div class="lang" role="group" aria-label="Language">
       <button type="button" id="b-it" class="on">IT</button>
       <button type="button" id="b-en">EN</button>
@@ -404,7 +500,7 @@ footer b{color:var(--green);font-weight:400}
         <a class="btn ghost" href="https://linkedin.com/in/dpetricone" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.1 21 14.3V21h-4v-5.9c0-1.4 0-3.2-1.95-3.2S12.8 13.4 12.8 15V21H9z"/></svg>LinkedIn</a>
       </div>
-      <div class="kbd-hint"><span data-l="it">premi</span><span data-l="en">press</span> <kbd>T</kbd> <span data-l="it">per aprire il terminale</span><span data-l="en">to open the terminal</span></div>
+      <div class="kbd-hint"><span class="hint-key"><span data-l="it">premi</span><span data-l="en">press</span> <kbd>T</kbd> <span data-l="it">per aprire il terminale</span><span data-l="en">to open the terminal</span></span><span class="hint-touch"><span data-l="it">tocca</span><span data-l="en">tap</span> <kbd>&gt;_</kbd> <span data-l="it">in alto per aprire il terminale</span><span data-l="en">at the top to open the terminal</span></span></div>
     </div>
     <div class="photo-wrap">
       <span class="bracket tl"></span><span class="bracket tr"></span><span class="bracket bl"></span><span class="bracket br"></span>
@@ -477,7 +573,7 @@ footer b{color:var(--green);font-weight:400}
   <div class="term tchart reveal">
     <div class="term-h"><i></i><i></i><i></i><em>~/career/timeline.svg</em><span class="rt">2007 → <span data-l="it">oggi</span><span data-l="en">today</span></span></div>
     <div class="term-b">
-      <svg id="tchart" viewBox="0 0 1000 300" role="img" aria-label="Career timeline"></svg>
+      <div class="tscroll"><svg id="tchart" viewBox="0 0 1000 300" role="img" aria-label="Career timeline"></svg></div><div class="swipe-hint"><span data-l="it">← scorri il grafico →</span><span data-l="en">← swipe the chart →</span></div>
       <div class="legend">
         <span><i style="background:var(--violet)"></i>Digital &amp; AI</span>
         <span><i style="background:var(--green)"></i>Energy</span>
@@ -697,7 +793,7 @@ footer b{color:var(--green);font-weight:400}
       <canvas id="v3d"></canvas>
       <div class="vload" id="vload">loading model…</div>
       <div class="vhud" id="vhud"></div>
-      <div class="vhint"><span data-l="it">trascina · zoom con rotella</span><span data-l="en">drag · scroll to zoom</span></div>
+      <div class="vhint"><span class="hint-key"><span data-l="it">trascina · zoom con rotella</span><span data-l="en">drag · scroll to zoom</span></span><span class="hint-touch"><span data-l="it">1 dito ruota · 2 dita zoom</span><span data-l="en">1 finger rotate · pinch zoom</span></span></div>
       <div class="vctl">
         <button type="button" id="vslice">▶ <span data-l="it">stampa</span><span data-l="en">print</span></button>
         <button type="button" id="vwire">◇ wireframe</button>
@@ -767,8 +863,9 @@ footer b{color:var(--green);font-weight:400}
   function readColors(){var cs=getComputedStyle(body);C1=hex2rgb(cs.getPropertyValue('--green'));C2=hex2rgb(cs.getPropertyValue('--cyan'));
     $('gg1').setAttribute('stop-color','rgb('+C1+')');$('gg2').setAttribute('stop-color','rgb('+C2+')');}
   function setTheme(t,silent){if(THEMES.indexOf(t)<0)t='energy';if(t==='energy')body.removeAttribute('data-theme');else body.setAttribute('data-theme',t);
-    store('dp-theme',t);DP.theme=t;$('themebtn').textContent=(lang==='en'?TNAME_EN:TNAME)[t];readColors();
+    store('dp-theme',t);DP.theme=t;paintTheme();readColors();
     if(DP.onTheme)DP.onTheme.forEach(function(f){f();});}
+  function paintTheme(){var s=(lang==='en'?TNAME_EN:TNAME)[DP.theme||'energy'],sp=s.indexOf(' ');$('themebtn').innerHTML=esc(s.slice(0,sp))+'<span class="tl"> '+esc(s.slice(sp+1))+'</span>';}
   $('themebtn').addEventListener('click',function(){setTheme(THEMES[(THEMES.indexOf(DP.theme||'energy')+1)%3]);});
   DP.setTheme=setTheme;DP.onTheme=[];
 
@@ -779,7 +876,7 @@ footer b{color:var(--green);font-weight:400}
   var typer=$('typer'),ri=0,ci=0,del=false;
   var onLang=[];
   function setLang(l){lang=l==='en'?'en':'it';body.classList.toggle('en',lang==='en');document.documentElement.lang=lang;bit.classList.toggle('on',lang==='it');ben.classList.toggle('on',lang==='en');
-    ri=0;ci=0;del=false;store('dp-lang',lang);$('themebtn').textContent=(lang==='en'?TNAME_EN:TNAME)[DP.theme||'energy'];onLang.forEach(function(f){f();});}
+    ri=0;ci=0;del=false;store('dp-lang',lang);paintTheme();onLang.forEach(function(f){f();});}
   bit.addEventListener('click',function(){setLang('it');});ben.addEventListener('click',function(){setLang('en');});
   DP.setLang=setLang;
   function tick(){var s=roles[lang][ri%roles[lang].length];
@@ -787,6 +884,14 @@ footer b{color:var(--green);font-weight:400}
     else{ci--;typer.textContent=s.slice(0,ci);if(ci<=0){del=false;ri++;}}
     setTimeout(tick,del?22:48);}
   setTimeout(tick,1400);
+
+  /* ---------- mobile menu ---------- */
+  var menuBtn=$('menubtn'),navEl=$('nav');
+  function setMenu(o){navEl.classList.toggle('menu-open',o);menuBtn.setAttribute('aria-expanded',o?'true':'false');}
+  menuBtn.addEventListener('click',function(e){e.stopPropagation();setMenu(!navEl.classList.contains('menu-open'));});
+  document.querySelectorAll('#navlinks a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  document.addEventListener('click',function(e){if(navEl.classList.contains('menu-open')&&!navEl.contains(e.target))setMenu(false);});
+  window.addEventListener('resize',function(){if(window.innerWidth>1100)setMenu(false);});
 
   /* ---------- nav / progress / glow ---------- */
   var nav=$('nav'),prog=$('progress'),glow=$('glow');
@@ -854,6 +959,7 @@ footer b{color:var(--green);font-weight:400}
       g.addEventListener('mouseleave',function(){$('ttip').style.opacity=0;});
       g.addEventListener('click',function(){$('ttip').style.opacity=0;if(r.job>=0)openJob(r.job);});});}
   drawChart();onLang.push(drawChart);
+  setTimeout(function(){var ts=document.querySelector('.tscroll');if(ts&&ts.scrollWidth>ts.clientWidth)ts.scrollLeft=ts.scrollWidth;},400);
 
   /* ---------- knowledge base for the assistant ---------- */
   var KB=[
@@ -1058,6 +1164,9 @@ footer b{color:var(--green);font-weight:400}
       lines.forEach(function(s,i){var m=i?MIXG.slice().reverse().filter(function(q){return d.g[q.k][bi]>0.05;})[i-1]:null;pctx.fillStyle=m?m.c:'#e4f2ec';pctx.fillText(s,bx+9,Tp+18+i*15);});}}
   pc.addEventListener('mousemove',function(e){var r=pc.getBoundingClientRect();hoverX=e.clientX-r.left;drawGen();});
   pc.addEventListener('mouseleave',function(){hoverX=null;drawGen();});
+  var tt0;function touchAt(e){var r=pc.getBoundingClientRect();hoverX=e.touches[0].clientX-r.left;clearTimeout(tt0);drawGen();}
+  pc.addEventListener('touchstart',touchAt,{passive:true});pc.addEventListener('touchmove',touchAt,{passive:true});
+  pc.addEventListener('touchend',function(){tt0=setTimeout(function(){hoverX=null;drawGen();},2500);},{passive:true});
 
   function loadAll(){loadMeteo();loadGen();}
   loadAll();setInterval(loadAll,15*60*1000);
@@ -1078,7 +1187,7 @@ footer b{color:var(--green);font-weight:400}
       for(var s=0;s<steps;s++){if(Math.random()<.3){var nd=dirs[Math.floor(Math.random()*8)];if(nd[0]!==-d[0]||nd[1]!==-d[1])d=nd;}var len=1+Math.floor(Math.random()*3);x+=d[0]*G*len;y+=d[1]*G*len;pts.push([x,y]);}
       var L=[0];for(var i=1;i<pts.length;i++)L.push(L[i-1]+Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]));
       traces.push({p:pts,L:L,c:Math.random()<.7?0:1});}
-    drawStatic();pulses=[];for(var j=0;j<Math.min(60,traces.length);j++)pulses.push(newPulse());}
+    drawStatic();pulses=[];for(var j=0;j<Math.min(W<760?28:60,traces.length);j++)pulses.push(newPulse());}
   function newPulse(){return{tr:traces[Math.floor(Math.random()*traces.length)],d:-Math.random()*400,v:1.2+Math.random()*2.2};}
   function posAt(tr,d){for(var i=1;i<tr.L.length;i++){if(d<=tr.L[i]){var a=tr.p[i-1],b=tr.p[i],q=(d-tr.L[i-1])/(tr.L[i]-tr.L[i-1]||1);return[a[0]+(b[0]-a[0])*q,a[1]+(b[1]-a[1])*q];}}return tr.p[tr.p.length-1];}
   var heroVisible=true;
@@ -1195,7 +1304,7 @@ function init() {
   const H = 2;
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, window.innerWidth < 760 ? 1.5 : 2));
   renderer.localClippingEnabled = true;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 
