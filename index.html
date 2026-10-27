@@ -484,6 +484,20 @@ nav.menu-open #menubtn span:nth-child(3){transform:translateY(-6px) rotate(-45de
   .thint{position:fixed;inset-block-start:58px;inset-inline-end:4vw}
   .thint::before{inset-inline-end:110px}
 }
+
+/* numeric values: always on one line */
+.kpi b,.gauge .n,.mixleg .gw,.mixleg .pc,.mring .pct{white-space:nowrap;font-variant-numeric:tabular-nums}
+.kpi{min-width:0;display:flex;flex-direction:column;justify-content:flex-start}
+.kpi small{white-space:normal;line-height:1.3;min-height:2.6em}
+.kpi b{display:block;font-size:clamp(.9rem,1.25vw,1.15rem);line-height:1.3;overflow:hidden;text-overflow:ellipsis}
+.kpi .ksub{display:block;font-family:var(--mono);font-size:.7rem;color:var(--muted);margin-top:2px;min-height:0;text-transform:none}
+.meteo .kpi small{min-height:0}
+.meteo .kpi b{font-size:clamp(1rem,1.5vw,1.3rem)}
+.mixleg div{display:grid;grid-template-columns:10px minmax(0,1fr) auto 3.4em;align-items:center;column-gap:8px}
+.mixleg div em{font-style:normal;line-height:1.25}
+.mixleg div span{margin:0;font-family:var(--mono);color:var(--muted);text-align:end}
+.mixleg div .pc{color:var(--ink)}
+@media (max-width:760px){.kpi small{min-height:0}.kpi b{font-size:1rem}.meteo .kpi b{font-size:1.05rem}}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.printing{clip-path:none}#tchart .bar{transform:none}}
 @media print{#circuit,#glow,nav,#boot,.ticker,#progress,.horizon,#tx,.viewer,#data,#ask{display:none}.reveal{opacity:1;transform:none}.printing{clip-path:none}.job-b{max-height:none!important}}
 </style>
@@ -792,7 +806,7 @@ nav.menu-open #menubtn span:nth-child(3){transform:translateY(-6px) rotate(-45de
         <div class="kpis">
           <div class="kpi"><small><span data-l="it">rinnovabili ora</span><span data-l="en">renewables now</span></small><b id="pnow">—</b></div>
           <div class="kpi"><small><span data-l="it">produzione ora</span><span data-l="en">generation now</span></small><b id="pmin">—</b></div>
-          <div class="kpi"><small><span data-l="it">picco solare</span><span data-l="en">solar peak</span></small><b id="pmax">—</b></div>
+          <div class="kpi"><small><span data-l="it">picco solare</span><span data-l="en">solar peak</span></small><b id="pmax">—</b><small class="ksub" id="pmaxt"></small></div>
           <div class="kpi"><small><span data-l="it">rinnovabili media oggi</span><span data-l="en">renewables avg today</span></small><b id="pavg">—</b></div>
         </div>
       </div>
@@ -1192,25 +1206,25 @@ nav.menu-open #menubtn span:nth-child(3){transform:translateY(-6px) rotate(-45de
     if(!d){LIVE.ren.v=LIVE.solar.v=LIVE.load.v=null;paintLive();['pnow','pmin','pmax','pavg'].forEach(function(i){$(i).textContent='—';});return;}
     var n=d.ts.length-1,rp=renPct(d,n),avg=0;for(var i=0;i<=n;i++)avg+=renPct(d,i);avg/=(n+1);
     var sp=0,spi=0;d.g.solar.forEach(function(v,i){if(v>sp){sp=v;spi=i;}});
-    $('pnow').textContent=fmtN(rp)+'%';$('pmin').textContent=fmtN(d.tot[n],1)+' GW';$('pmax').textContent=sp>0?fmtN(sp,1)+' GW · '+hhmm(d.ts[spi]):'—';$('pavg').textContent=fmtN(avg)+'%';
+    $('pnow').textContent=fmtN(rp)+'%';$('pmin').textContent=fmtN(d.tot[n],1)+' GW';$('pmax').textContent=sp>0?fmtN(sp,1)+' GW':'—';$('pmaxt').textContent=sp>0?T('alle ','at ')+hhmm(d.ts[spi]):'';$('pavg').textContent=fmtN(avg)+'%';
     $('pupd').textContent=T('agg. ','upd. ')+hhmm(d.ts[n]);$('mupd').textContent=hhmm(d.ts[n]);
     LIVE.ren.v=fmtN(rp)+'%';LIVE.solar.v=d.g.solar[n]>0.05?fmtN(d.g.solar[n],1)+' GW':null;LIVE.load.v=fmtN(d.tot[n],1)+' GW';paintLive();
     /* donut */
     var C=2*Math.PI*70,off=0,segs='',leg='';
     MIXG.forEach(function(m){var v=d.g[m.k][n];if(v<=0)return;var f=v/d.tot[n],len=f*C;
       segs+='<circle cx="100" cy="100" r="70" stroke="'+m.c+'" stroke-dasharray="'+Math.max(0,len-1.5).toFixed(2)+' '+(C-len+1.5).toFixed(2)+'" stroke-dashoffset="'+(-off).toFixed(2)+'"><title>'+esc(T(m.it,m.en))+'</title></circle>';off+=len;
-      leg+='<div><i style="background:'+m.c+'"></i>'+esc(T(m.it,m.en))+'<span>'+fmtN(v,1)+' GW · '+fmtN(f*100)+'%</span></div>';});
+      leg+='<div><i style="background:'+m.c+'"></i><em>'+esc(T(m.it,m.en))+'</em><span class="gw">'+fmtN(v,1)+' GW</span><span class="pc">'+fmtN(f*100)+'%</span></div>';});
     $('dseg').innerHTML=segs;$('mixleg').innerHTML=leg;$('dren').textContent=fmtN(rp)+'%';$('drenl').textContent=T('rinnovabili','renewables');
     $('glegend').innerHTML=MIXG.map(function(m){return'<span><i style="background:'+m.c+'"></i>'+esc(T(m.it,m.en))+'</span>';}).join('');
     drawGen();}
   function drawGen(){var d=DATA.gen;if(!d)return;var dpr=Math.min(window.devicePixelRatio||1,2),W=pc.clientWidth,H=pc.clientHeight;
     pc.width=W*dpr;pc.height=H*dpr;pctx.setTransform(dpr,0,0,dpr,0,0);pctx.clearRect(0,0,W,H);
-    var L=44,R=12,Tp=12,B=26,day0=new Date(d.ts[0]*1000);day0.setHours(0,0,0,0);var t0=day0.getTime()/1000,t1=t0+86400;
+    var L=44,R=12,Tp=24,B=26,day0=new Date(d.ts[0]*1000);day0.setHours(0,0,0,0);var t0=day0.getTime()/1000,t1=t0+86400;
     var hi=Math.max.apply(null,d.tot)*1.12||1;
     var X=function(t){return L+(t-t0)/(t1-t0)*(W-L-R);},Y=function(v){return Tp+(1-v/hi)*(H-Tp-B);};
     pctx.font='11px Consolas,monospace';pctx.fillStyle='rgba(134,160,166,.9)';pctx.strokeStyle='rgba(255,255,255,.06)';pctx.lineWidth=1;
     for(var g=0;g<=4;g++){var v=hi*g/4,yy=Y(v);pctx.beginPath();pctx.moveTo(L,yy);pctx.lineTo(W-R,yy);pctx.stroke();pctx.fillText(Math.round(v)+'',8,yy+4);}
-    pctx.fillText('GW',8,Tp-2>8?Tp-2:10);
+    pctx.fillText('GW',8,11);
     for(var hr=0;hr<=24;hr+=3){var xx=X(t0+hr*3600);pctx.fillText(('0'+hr).slice(-2)+':00',xx-16,H-8);}
     var base=d.ts.map(function(){return 0;});
     MIXG.forEach(function(m){var top=base.map(function(b,i){return b+d.g[m.k][i];});
