@@ -145,7 +145,7 @@ h1 .ln2::after{animation-delay:.5s}
 @media (max-width:560px){.tagline{display:none}}
 
 .horizon{position:absolute;inset-inline:0;inset-block-end:0;height:170px;z-index:3;pointer-events:none}
-.horizon svg{width:100%;height:100%;display:block}
+.horizon svg{width:100%;height:100%;display:block;overflow:visible}
 .horizon [stroke="#2bff88"]{stroke:var(--green)}.horizon [fill="#2bff88"]{fill:var(--green)}
 .horizon [stroke="#18d2ff"]{stroke:var(--cyan)}.horizon [fill="#18d2ff"]{fill:var(--cyan)}
 .blades{transform-box:view-box;animation:spin 6s linear infinite}
@@ -259,7 +259,7 @@ h2 .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;
 #chatlog{height:330px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;padding-inline-end:6px;scrollbar-width:thin}
 .msg{max-width:88%;padding:11px 14px;border-radius:12px;font-size:.94rem;line-height:1.5;white-space:pre-line}
 .msg.bot{background:rgba(255,255,255,.04);border:1px solid var(--line);border-start-start-radius:3px;align-self:flex-start}
-.msg.bot::before{content:"daniele.ai";display:block;font-family:var(--mono);font-size:.68rem;color:var(--green);margin-bottom:4px}
+.msg.bot::before{content:"daniele.bot";display:block;font-family:var(--mono);font-size:.68rem;color:var(--green);margin-bottom:4px}
 .msg.me{background:color-mix(in srgb,var(--green) 14%,transparent);border:1px solid color-mix(in srgb,var(--green) 30%,transparent);align-self:flex-end;border-start-end-radius:3px}
 .chips{display:flex;flex-wrap:wrap;gap:7px}
 .chips button{background:none;border:1px dashed var(--line);color:var(--muted);padding:5px 11px;border-radius:999px;font-size:.78rem;cursor:pointer;transition:all .2s}
@@ -557,7 +557,7 @@ nav.menu-open #menubtn span:nth-child(3){transform:translateY(-6px) rotate(-45de
     </div>
   </div>
   <div class="horizon" aria-hidden="true">
-    <svg viewBox="0 0 1440 170" preserveAspectRatio="xMidYMax slice">
+    <svg viewBox="0 0 1440 170" preserveAspectRatio="xMidYMax slice" overflow="visible">
       <path d="M0 150 L1440 150" stroke="#2bff88" stroke-width="1.2" opacity=".5"/>
       <path class="flow" d="M60 150 L1380 150" stroke="#2bff88" stroke-width="2" opacity=".55"/>
       <g stroke="#2bff88" stroke-width="2" fill="none" opacity=".75">
@@ -1037,8 +1037,8 @@ nav.menu-open #menubtn span:nth-child(3){transform:translateY(-6px) rotate(-45de
      it:'La Microsoft Power Platform è il suo strumento principale: Power Apps, Power Automate, Power Query e SharePoint per digitalizzare processi operativi e documentali, ridurre le attività manuali e aumentare affidabilità e tracciabilità. Si occupa anche della governance dei flussi low-code.',
      en:'Microsoft Power Platform is his core toolset: Power Apps, Power Automate, Power Query and SharePoint to digitalise operational and document processes, cut manual work and improve reliability and traceability. He also looks after low-code governance.'},
     {k:['ai','intelligenza artificiale','artificial intelligence','genai','generativa','generative','copilot','agent','agenti','agente','llm','prompt','chatgpt','openai','copilot studio'],
-     it:'Valuta e implementa casi d\'uso di AI generativa e Microsoft Copilot (analisi documentale, knowledge retrieval, code review, supporto operativo), progetta agenti Copilot e prompt, e valuta workflow agentici e Copilot Studio rispettando i vincoli di sicurezza, compliance e governance aziendale. Questo stesso assistente è un piccolo esempio del suo approccio.',
-     en:'He assesses and implements Generative-AI and Microsoft Copilot use cases (document analysis, knowledge retrieval, code review, operational support), designs Copilot agents and prompts, and evaluates agentic workflows and Copilot Studio within corporate security, compliance and governance constraints. This very assistant is a small example of his approach.'},
+     it:'Valuta e implementa casi d\'uso di AI generativa e Microsoft Copilot (analisi documentale, knowledge retrieval, code review, supporto operativo), progetta agenti Copilot e prompt, e valuta workflow agentici e Copilot Studio rispettando i vincoli di sicurezza, compliance e governance aziendale.',
+     en:'He assesses and implements Generative-AI and Microsoft Copilot use cases (document analysis, knowledge retrieval, code review, operational support), designs Copilot agents and prompts, and evaluates agentic workflows and Copilot Studio within corporate security, compliance and governance constraints.'},
     {k:['dati','data','power bi','powerbi','sql','python','vba','excel','analytics','analisi dati','bi','dax','dashboard','report','reporting','dataiku','database','modell'],
      it:'Lato dati lavora con Power BI, Power Query, SQL, Python, VBA ed Excel avanzato, oltre a Analysis Services e Dataiku. Ha sviluppato modelli di forecasting e simulazione, dataset di business intelligence, soluzioni di data integration e reporting a supporto delle decisioni.',
      en:'On the data side he works with Power BI, Power Query, SQL, Python, VBA and advanced Excel, plus Analysis Services and Dataiku. He has built forecasting and simulation models, BI datasets, data-integration and reporting solutions that support decisions.'},
